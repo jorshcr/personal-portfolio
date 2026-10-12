@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore my projects, experiments, and work in progress.">
+  <title>FPGA Camera Vision Accelerator — Josh Rodriguez</title>
+  <link rel="preload" href="fonts/Lora.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="home.css">
+<link rel="stylesheet" href="design.css">
+<link rel="stylesheet" href="timeline-home.css">
+<link rel="stylesheet" href="projects.css">
+<script src="vendor/gsap.min.js" defer></script>
+<script src="vendor/ScrollTrigger.min.js" defer></script>
+<script src="timeline-home.js" defer></script>
+<script src="portrait-size.js" defer></script>
+<script src="gallery.js" defer></script>
+<script src="navigation.js" defer></script>
+</head>
+<body class="portfolio-page projects-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+    <a class="wordmark" href="index.html">Josh Rodriguez</a>
+    <nav aria-label="Main navigation"><a href="index.html">Home</a><a href="projects.html" aria-current="page">Projects</a></nav>
+  </header>
+  <main id="main" class="project-detail-main"><a class="back-projects" data-page-link href="projects.html">← Back to projects</a><article class="project-detail-hero">
+ <div class="project-image-placeholder" role="img" aria-label="FPGA Camera Vision Accelerator image to be added"></div>
+ <div class="project-copy"><h1>FPGA Camera Vision Accelerator</h1><p class="project-skills">Verilog, FPGA, Computer Vision</p>
+ <p class="project-overview">A real-time camera system that displays edge detection and feature overlays on a VGA monitor. It brings image processing directly into hardware, with pipelines designed to process one pixel per clock.</p>
+ <p class="expanded-intro">Expanded project description below</p>
+ </div></article><div class="project-narrative"><p><strong>Problem / Inspiration:</strong> Process live camera images directly on an FPGA, including edge and feature detection.</p><p><strong>Contributions:</strong> Built on the Nexys A7-100T with an OV7670 camera, asynchronous clock-domain crossing, and BRAM frame buffering. The design supports Sobel filtering, FAST-9 corner detection, and ORB descriptors, with timing closed at 100 MHz.</p><p><strong>Outcomes:</strong> Produced 640 × 480 VGA output and closed timing at 100 MHz. The design supports up to 384 ORB keypoints per frame.</p></div></main>
+</body>
+</html>
+

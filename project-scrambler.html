@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore my projects, experiments, and work in progress.">
+  <title>Scrambler Humanoid Robot — Josh Rodriguez</title>
+  <link rel="preload" href="fonts/Lora.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="home.css">
+<link rel="stylesheet" href="design.css">
+<link rel="stylesheet" href="timeline-home.css">
+<link rel="stylesheet" href="projects.css">
+<script src="vendor/gsap.min.js" defer></script>
+<script src="vendor/ScrollTrigger.min.js" defer></script>
+<script src="timeline-home.js" defer></script>
+<script src="portrait-size.js" defer></script>
+<script src="gallery.js" defer></script>
+<script src="navigation.js" defer></script>
+</head>
+<body class="portfolio-page projects-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+    <a class="wordmark" href="index.html">Josh Rodriguez</a>
+    <nav aria-label="Main navigation"><a href="index.html">Home</a><a href="projects.html" aria-current="page">Projects</a></nav>
+  </header>
+  <main id="main" class="project-detail-main"><a class="back-projects" data-page-link href="projects.html">← Back to projects</a><article class="project-detail-hero">
+ <div class="project-image-placeholder" role="img" aria-label="Scrambler Humanoid Robot image to be added"></div>
+ <div class="project-copy"><h1>Scrambler Humanoid Robot</h1><p class="project-skills">JAX, Reinforcement Learning, MuJoCo</p>
+ <p class="project-overview">A reinforcement-learning pipeline exploring how a humanoid robot could balance and crawl on steep terrain. The project combines simulated locomotion with a vision-based approach to evaluating grip.</p>
+ <p class="expanded-intro">Expanded project description below</p>
+ </div></article><div class="project-narrative"><p><strong>Problem / Inspiration:</strong> Explore humanoid balancing and crawling for steep-terrain locomotion.</p><p><strong>Contributions:</strong> Developed a two-stage PPO pipeline for the 29-DOF Unitree G1, targeting slopes of 30–45 degrees in simulation. An ArUco-based vision pipeline tracks compliant-hand deformation to estimate grip quality. The project placed second at Himalaya Hacks; these are development targets, not measured physical deployment results.</p><p><strong>Outcomes:</strong> Placed second at Himalaya Hacks. The locomotion pipeline targeted 30–45° slopes; physical performance results are not established.</p></div></main>
+</body>
+</html>
+

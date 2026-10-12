@@ -1,0 +1,55 @@
+body{padding-inline:max(24px,calc((100vw - 1100px)/2))}
+#description{min-height:54px}
+#scroller{height:360px}
+#runway{height:3200px}
+.scene{height:358px;padding:36px 62px 20px;min-width:940px}
+.rail-area{height:108px;padding-top:24px}
+.track{margin:10px 0 0;height:1px}
+.dot{left:var(--pos);width:14px;height:14px;margin:-7px}
+.dot.summer{width:10px;height:10px;margin:-5px;border-radius:50%;rotate:0deg}
+.dot::after{content:'';position:absolute;inset:-12px}
+.labels{position:relative;display:block;margin-top:20px;height:50px;color:#333;font-size:18px}
+.labels>span{position:absolute;left:var(--pos);transform:translateX(-50%);white-space:nowrap;text-align:center}
+.labels .summer-label{top:-65px;color:#666}
+.labels em{display:block;font-size:18px;font-style:normal;color:#666;margin-top:2px}
+.stories{margin-top:22px;height:138px}
+.stories article{max-width:660px}
+.stories h2{font-size:18px;margin:5px 0 6px;font-weight:600}
+.stories p{font-size:18px;max-width:660px;line-height:1.4}
+.kicker{font-size:18px;color:#666}
+.legend{display:flex;gap:22px;color:#666;font-size:18px;margin-top:8px}
+.legend span:last-child{margin-left:auto}
+.era{display:none}
+.chapters .era{display:grid;grid-template-columns:43% 57%;position:absolute;inset:-14px -24px auto;gap:0;height:115px;z-index:0;pointer-events:none}
+.chapters .era span{background:#beddf244;padding:6px 15px;font-size:18px;color:#555}
+.chapters .era span+span{background:#beddf244}
+.chapters .track,.chapters .labels{z-index:1}
+.chapters .rail-area{padding-top:35px}
+.chapters .labels .summer-label{top:25px;background:white;padding:0 3px}
+.chapters .labels em{margin-top:0}
+.chapters .stories{margin-top:30px;height:130px}
+.segments .track{height:4px;border-radius:6px;background:#eaeaea}
+.segments .fill{border-radius:6px;background:#beddf2}
+.segments .track:after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0,transparent calc(100% / 4 - 4px),white calc(100% / 4 - 4px),white calc(100% / 4));pointer-events:none}
+.segments .dot{z-index:3;border-width:1px}
+.segments .labels{margin-top:17px}
+.segments .labels .summer-label{top:-68px}
+@media(max-width:640px){.scene{padding:36px 62px 20px;height:358px}.labels{font-size:18px}#scroller{height:360px}.legend{gap:15px}}
+
+.dot{border-width:1px}
+.track{background:#e2e2e2}
+.fill{background:#beddf2}
+.labels .academic-label { white-space: normal; width: 124px; line-height: 1.3; }
+
+/* Story template: interests and skills above experience names; copy pending. */
+#scroller { height: 600px; }
+.scene { height: 598px; }
+.stories, .chapters .stories { height: 360px; margin-top: 22px; }
+.stories article { max-width: none; }
+.story-summary { margin-bottom: 22px; }
+.story-summary p { margin: 0 0 6px; }
+.skill-badges { min-height: 18px; }
+.experience-list { display: grid; gap: 14px; }
+.experience-entry h2 { font-size: 18px; line-height: 1.35; margin: 0; }
+.experience-description { min-height: 18px; margin: 0; }
+.stories .checkpoint-time { margin: 0 0 16px; font-size: 18px; font-weight: 400; color: #666; }

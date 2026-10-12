@@ -1,0 +1,155 @@
+/* Shared visual language. Keep this stylesheet after page layout styles. */
+@font-face {
+  font-family: Lora;
+  src: url('fonts/Lora.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+:root {
+  --font-main: Lora, Georgia, serif;
+  --title: 32px;
+  --heading: 24px;
+  --text: 18px;
+  --paper: #ffffff;
+  --ink: #111111;
+  --muted: #666666;
+  --line: #dddddd;
+  --coral: #f4b8b8;
+  --blue: #beddf2;
+  --green: var(--ink);
+  --accent: var(--blue);
+}
+body { font-family: var(--font-main); font-size: var(--text); color: var(--ink); background: var(--paper); }
+h1, .name, .wordmark { font-size: var(--title); font-weight: 700; letter-spacing: 0; line-height: 1.2; }
+h2, .timeline h2, .project-card h2, .next-project h2, nav a, .home-header nav a { font-family: var(--font-main); font-size: var(--heading); font-weight: 600; letter-spacing: 0; line-height: 1.25; }
+.bio, .eyebrow, .page-heading > p:last-child, .collection-label, .project-meta, .status, .project-card > p, .next-project > p:last-child, .tags li, .text-link, .site-footer, #timeline-hint, .art-caption, .mini-body > span, .button { font-family: var(--font-main); font-size: var(--text); letter-spacing: 0; text-transform: none; }
+.bio { color: #333333; line-height: 1.4; }
+.eyebrow, .category { font-weight: 600; }
+.project-meta, .site-footer, #timeline-hint, .art-caption { color: var(--muted); font-weight: 400; }
+.timeline-scroll { background: #eeeeee; scrollbar-color: #999999 #eeeeee; }
+.timeline-scroll li { font: 400 var(--text)/1.3 var(--font-main); color: var(--ink); }
+.education, .category { background: var(--coral); }
+.experience, .experience .category { background: var(--blue); }
+.category { border-right: 1px solid #00000020; }
+.portrait { background: #dddddd; }
+a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 5px; }
+a:focus-visible, .timeline-scroll:focus-visible { outline-color: var(--ink); }
+.project-art { background: var(--blue); }
+.mini-window { background: white; border-color: #999999; box-shadow: 12px 16px 0 var(--coral); }
+.mini-bar { border-color: var(--line); }
+.mini-bar i { background: #666666; }
+.mini-body b { font-size: var(--heading); font-weight: 600; letter-spacing: 0; }
+.mini-body b span, .wordmark span, .accent { color: var(--ink); }
+.mini-line, .tags li { background: var(--blue); }
+.status { background: var(--coral); border-color: transparent; color: var(--ink); }
+.next-project { background: white; border-color: #bbbbbb; }
+.plus { color: var(--ink); font-size: var(--title); }
+.art-caption { color: var(--ink); }
+.project-art { height: 340px; }
+.mini-body { padding: 18px; }
+.mini-body > span { font-weight: 600; }
+.collection-label, .project-meta { flex-wrap: wrap; gap: 12px; }
+@media (max-width: 600px) {
+  .introduction { grid-template-columns: 64px 1fr; gap: 14px; }
+  .bio p { margin-bottom: 14px; }
+  .timeline-heading { flex-wrap: wrap; gap: 4px; }
+  .site-header { flex-wrap: wrap; padding-block: 16px; gap: 12px; }
+  .site-header nav { width: 100%; }
+  .mini-window { width: 80%; }
+}
+@media (max-height: 600px) and (min-width: 601px) {
+  body { padding-bottom: 12px; }
+  .bio { line-height: 1.25; }
+  .bio p { margin-bottom: 8px; }
+}
+
+/* Identical header geometry on both pages, independent of page layout. */
+body.portfolio-page { padding: 0 0 clamp(28px, 10vh, 100px); }
+.home-page > main { width: min(1120px, calc(100% - 96px)); margin-inline: auto; }
+.site-header.wrap {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  width: min(1120px, calc(100% - 96px));
+  min-height: 108px;
+  margin-inline: auto;
+  padding: 0;
+  gap: 32px;
+  border: 0;
+  line-height: 1.2;
+}
+.site-header .wordmark { font: 700 var(--title)/1.2 var(--font-main); letter-spacing: 0; white-space: nowrap; }
+.site-header nav { display: flex; flex: 0 0 auto; width: auto; margin-left: auto; justify-content: flex-end; gap: 34px; }
+.site-header nav a { font: 400 var(--heading)/1.25 var(--font-main); padding: 8px 0; border: 0; }
+.site-header nav a[aria-current="page"] { border: 0; }
+.site-header a:hover { text-decoration: none; opacity: .65; }
+@media (max-width: 700px) {
+  .site-header.wrap { width: calc(100% - 40px); min-height: 108px; padding-block: 16px; flex-wrap: wrap; gap: 12px; }
+  .site-header nav { width: 100%; gap: 30px; }
+  .home-page > main { width: calc(100% - 40px); }
+}
+@media (max-height: 600px) { body.portfolio-page { padding-bottom: 12px; } }
+
+/* Approved portrait: 243px, 4:5, 1.24× cover, position 41% / 83%. */
+.portrait {
+  position: relative;
+  overflow: hidden;
+  width: 243px;
+  max-width: 100%;
+  max-height: none;
+  aspect-ratio: 4 / 5;
+}
+.portrait img {
+  position: absolute;
+  width: 232.5%;
+  height: 124%;
+  max-width: none;
+  left: -54.325%;
+  top: -19.92%;
+}
+
+/* Stable, centered layout: zoom scales the page without rearranging it. */
+html { overflow: auto; }
+body.portfolio-page {
+  min-width: 916px;
+  height: auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: visible;
+  padding: 0 48px 48px;
+}
+.site-header.wrap {
+  width: 820px;
+  min-height: 108px;
+  flex-wrap: nowrap;
+  padding: 0;
+  gap: 32px;
+}
+.site-header nav { width: auto; gap: 34px; }
+.home-page > main {
+  width: 820px;
+  flex: 0 0 auto;
+  margin-inline: auto;
+}
+.introduction {
+  grid-template-columns: 243px 1fr;
+  gap: 32px;
+  margin-top: 38px;
+}
+.portrait { width: 243px; max-width: none; max-height: none; }
+.bio {
+  max-width: none;
+  padding: 8px 12px 0 0;
+  font-size: var(--text);
+  line-height: 1.5;
+}
+.bio p { margin: 0 0 24px; }
+.bio p:last-child { margin-bottom: 0; }
+
+.continuing-roles { margin-top: 18px; }
+.continuing-label { display: block; margin-bottom: 8px; color: #666; font-size: 18px; }
+.continuing-roles ul { display: flex; flex-wrap: wrap; gap: 8px; width: auto; min-width: 0; margin: 0; padding: 0; list-style: none; }
+.continuing-roles li { display: block; flex: 0 1 auto; min-height: 0; padding: 5px 10px; border-radius: 6px; background: #beddf233; color: #333; font: 400 18px/1.35 var(--font-main); }

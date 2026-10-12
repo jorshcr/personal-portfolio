@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore my projects, experiments, and work in progress.">
+  <title>UNIT Fitness — Josh Rodriguez</title>
+  <link rel="preload" href="fonts/Lora.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="home.css">
+<link rel="stylesheet" href="design.css">
+<link rel="stylesheet" href="timeline-home.css">
+<link rel="stylesheet" href="projects.css">
+<script src="vendor/gsap.min.js" defer></script>
+<script src="vendor/ScrollTrigger.min.js" defer></script>
+<script src="timeline-home.js" defer></script>
+<script src="portrait-size.js" defer></script>
+<script src="gallery.js" defer></script>
+<script src="navigation.js" defer></script>
+</head>
+<body class="portfolio-page projects-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+    <a class="wordmark" href="index.html">Josh Rodriguez</a>
+    <nav aria-label="Main navigation"><a href="index.html">Home</a><a href="projects.html" aria-current="page">Projects</a></nav>
+  </header>
+  <main id="main" class="project-detail-main"><a class="back-projects" data-page-link href="projects.html">← Back to projects</a><article class="project-detail-hero">
+ <div class="project-image-placeholder" role="img" aria-label="UNIT Fitness image to be added"></div>
+ <div class="project-copy"><h1>UNIT Fitness</h1><p class="project-skills">Embedded Systems, BLE, Signal Processing</p>
+ <p class="project-overview">A retrofit sensor system for weight-stack machines that sends workout data to an iOS app. It explores automatic rep, set, and effort tracking without manual logging.</p>
+ <p class="expanded-intro">Expanded project description below</p>
+ </div></article><div class="project-narrative"><p><strong>Problem / Inspiration:</strong> Track repetitions, sets, and effort on weight-stack machines without manual logging.</p><p><strong>Contributions:</strong> The system streams IMU and HX711 load-cell data over BLE. Real-time motion segmentation isolates concentric movement, while a regression model trained on more than 50 lat-pulldown sets estimates proximity to muscular failure.</p><p><strong>Outcomes:</strong> Developed the sensor-to-app tracking system and an effort-estimation model trained on more than 50 lat-pulldown sets.</p></div></main>
+</body>
+</html>
+

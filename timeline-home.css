@@ -1,0 +1,52 @@
+.home-timeline { margin-top: 44px; }
+.home-timeline .timeline-caption { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; }
+.home-timeline .timeline-caption h2 { margin:0; }
+.home-timeline .timeline-caption span { font-size:18px; color:#666; }
+.home-timeline #scroller { height:590px; overflow-y:auto; overscroll-behavior:contain; scrollbar-width:thin; scrollbar-color:#ccc white; }
+.home-timeline #runway { height:5020px; position:relative; }
+.home-timeline .scene { position:sticky; top:0; height:590px; padding:24px 62px; background:white; }
+.home-timeline .rail-area { height:105px; padding-top:8px; }
+.home-timeline .era { display:none; }
+.home-timeline .track { position:relative; height:4px; border-radius:6px; background:#eaeaea; }
+.home-timeline .fill { position:absolute; inset:0; border-radius:6px; background:#beddf2; transform:scaleX(0); transform-origin:left; }
+.home-timeline .track:after { content:''; position:absolute; inset:0; background:repeating-linear-gradient(90deg,transparent 0,transparent calc(100% / 4 - 4px),white calc(100% / 4 - 4px),white calc(100% / 4)); pointer-events:none; }
+.home-timeline .dot { position:absolute; left:var(--pos); top:50%; width:14px; height:14px; margin:-7px; padding:0; border:1px solid #ccc; border-radius:50%; background:white; cursor:pointer; z-index:2; }
+.home-timeline .dot.summer { width:10px; height:10px; margin:-5px; }
+.home-timeline .dot:after { content:''; position:absolute; inset:-12px; }
+.home-timeline .labels { position:relative; margin-top:18px; font-size:18px; color:#333; }
+.home-timeline .labels>span { position:absolute; left:var(--pos); width:130px; transform:translateX(-50%); text-align:center; line-height:1.3; }
+.home-timeline .labels em { display:block; font-style:normal; color:#666; }
+.home-timeline .stories { position:relative; margin-top:16px; height:420px; }
+.home-timeline article { position:absolute; inset:0; }
+.home-timeline article:not(:first-child) { visibility:hidden; opacity:0; }
+.home-timeline .checkpoint-time { color:#666; margin:0 0 16px; font-size:18px; line-height:1.4; }
+.home-timeline .experience-list { display:grid; gap:16px; }
+.home-timeline .experience-entry h2 { font-size:18px; font-weight:600; line-height:1.35; margin:0 0 4px; }
+.home-timeline .experience-description { font-size:18px; line-height:1.4; color:#444; margin:0; }
+.home-timeline button:focus-visible,.home-timeline #scroller:focus-visible { outline:2px solid #111; outline-offset:4px; }
+
+/* Fit Home to the viewport; the timeline owns its remaining space. */
+body.home-page { height:100dvh; min-height:0; padding-bottom:16px; overflow:hidden; }
+.home-page > main { flex:1; min-height:0; }
+.home-page .introduction { grid-template-columns:176px 1fr; margin-top:12px; gap:28px; flex:0 0 auto; }
+.home-page .portrait { width:176px; height:220px; }
+.home-page .bio { padding-top:0; line-height:1.4; }
+.home-page .bio p { margin-bottom:16px; }
+.home-page .bio p:last-child { margin-bottom:0; }
+.home-timeline { flex:1; min-height:0; margin-top:20px; display:flex; flex-direction:column; }
+.home-timeline .timeline-caption { flex:0 0 auto; margin-bottom:8px; }
+.home-timeline #scroller { flex:1; min-height:0; height:auto; }
+.home-timeline .scene { height:var(--timeline-height,400px); padding:16px 62px 8px; display:flex; flex-direction:column; }
+.home-timeline .rail-area { flex:0 0 70px; height:70px; }
+.home-timeline .stories { flex:1; min-height:0; height:auto; margin-top:2px; }
+.home-timeline article { overflow:hidden; padding-right:6px; }
+.home-timeline .story-content { display:flow-root; padding-bottom:24px; }
+.home-timeline .checkpoint-time { margin-bottom:10px; }
+.home-timeline .experience-list { gap:10px; }
+
+/* Quieter story typography beneath the timeline. */
+.home-timeline .experience-entry h2 { font-weight:400; color:#333; }
+.home-timeline .experience-description { color:#666; }
+.home-timeline .continuing-label { color:#777; font-weight:400; }
+.home-timeline .continuing-roles li { background:transparent; color:#666; padding:2px 0; }
+.home-timeline .continuing-roles ul { gap:6px 16px; }
