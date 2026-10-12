@@ -50,3 +50,19 @@ body.home-page { height:100dvh; min-height:0; padding-bottom:16px; overflow:hidd
 .home-timeline .continuing-label { color:#777; font-weight:400; }
 .home-timeline .continuing-roles li { background:transparent; color:#666; padding:2px 0; }
 .home-timeline .continuing-roles ul { gap:6px 16px; }
+
+/* One stationary experience per scroll step. */
+.home-page .introduction { margin-top:0; grid-template-columns:250px 1fr; gap:28px; }
+.home-page .portrait { width:250px; height:250px; aspect-ratio:1; }
+.home-page .portrait img { width:186%; height:124%; left:-35.26%; top:-19.92%; }
+.home-page .bio p { margin-bottom:12px; }
+.home-page .bio p:last-child { margin-bottom:0; }
+.home-timeline { flex:0 1 255px; margin-top:auto; }
+.home-timeline .scene { height:100%; padding-top:10px; }
+.home-timeline #runway .scene { height:245px; }
+.home-timeline .stories { flex:0 0 145px; }
+.home-timeline article { overflow:visible; }
+.home-timeline .experience-entry h2 { min-height:0; margin:0 0 4px; line-height:1.35; }
+.home-timeline .experience-description { line-height:1.35; }
+.home-timeline .checkpoint-time { margin-bottom:6px; line-height:1.35; }
+.home-timeline .continuing-roles { margin-top:0; }

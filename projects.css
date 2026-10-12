@@ -2,7 +2,7 @@
 .portfolio-project { display:grid; grid-template-columns:230px 1fr; gap:24px; align-items:start; }
 .project-image-placeholder { width:230px; aspect-ratio:1; background:#ddd; }
 .project-copy { padding-top:0; }
-.project-copy h2 { margin:0 0 4px; font-size:24px; line-height:1.25; font-weight:600; }
+.project-copy h2 { margin:0 0 4px; font-size:18px; line-height:1.25; font-weight:700; }
 .project-copy .project-skills { margin:0; color:#555; font-size:18px; line-height:1.4; }
 .project-copy .project-overview { margin:22px 0 26px; font-size:18px; line-height:1.45; color:#333; }
 .project-copy details { font-size:18px; line-height:1.45; }
@@ -20,7 +20,7 @@
 .project-detail-hero .project-image-placeholder { width:320px; }
 .project-detail-hero .project-copy { min-height:320px; display:flex; flex-direction:column; }
 .project-detail-hero .project-overview { margin:26px 0 24px; }
-.project-detail-hero h1 { font-size:24px; margin:0 0 4px; }
+.project-detail-hero h1 { font-size:18px; font-weight:700; margin:0 0 4px; }
 .expanded-intro { margin:auto 0 12px; font-size:18px; color:#444; }
 .project-narrative { margin-top:28px; font-size:18px; line-height:1.5; }
 .project-narrative p { margin:0 0 14px; }

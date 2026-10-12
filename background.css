@@ -1,0 +1,26 @@
+.site-wave {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: #dedede;
+}
+.site-wave canvas { position:absolute; inset:0; width:100%; height:100%; }
+
+/* One opaque column covers the ASCII through headers, content, and gaps. */
+body.portfolio-page { position:relative; }
+body.portfolio-page::after {
+  content:'';
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:880px;
+  background:#fff;
+  z-index:0;
+  pointer-events:none;
+}
+body.portfolio-page > header,
+body.portfolio-page > main { position:relative; z-index:1; background:#fff; }
+.home-timeline .scene { background:#fff; }
