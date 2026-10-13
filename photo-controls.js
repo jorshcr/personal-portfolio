@@ -1,0 +1,15 @@
+(() => {
+const key='home-photo-crop-v1';
+const defaults={width:220,height:180,zoom:1.33,x:31,y:78};
+function init(){
+ const photo=document.querySelector('.home-page .portrait');if(!photo||photo.querySelector('.photo-edit-toggle'))return;
+ const img=photo.querySelector('img');let values={...defaults};try{Object.assign(values,JSON.parse(localStorage.getItem(key))||{})}catch{}
+ const button=document.createElement('button');button.className='photo-edit-toggle';button.textContent='Edit photo';button.type='button';photo.append(button);
+ const panel=document.createElement('div');panel.className='photo-edit-panel';panel.hidden=true;panel.setAttribute('aria-label','Photo crop controls');
+ const fields=[['width','Width',140,250,1],['height','Height',180,250,1],['zoom','Zoom',1,2.5,.01],['x','Horizontal position',0,100,1],['y','Vertical position',0,100,1]];
+ function apply(){photo.style.setProperty('width',values.width+'px','important');photo.style.setProperty('height',values.height+'px','important');const scale=Math.max(values.width/5184,values.height/3456)*values.zoom;const w=5184*scale,h=3456*scale;Object.assign(img.style,{width:w+'px',height:h+'px',left:((values.width-w)*values.x/100)+'px',top:((values.height-h)*values.y/100)+'px'});}
+ for(const [id,label,min,max,step] of fields){const row=document.createElement('label'),caption=document.createElement('span'),input=document.createElement('input');input.type='range';input.min=min;input.max=max;input.step=step;input.value=values[id];input.setAttribute('aria-label',label);function refresh(){caption.textContent=label+': '+values[id]+(id==='zoom'?'×':id==='x'||id==='y'?'%':'px')}refresh();input.oninput=()=>{values[id]=Number(input.value);refresh();apply()};row.append(caption,input);panel.append(row);}
+ const actions=document.createElement('div');actions.className='photo-edit-actions';const save=document.createElement('button');save.textContent='Save crop';save.onclick=()=>{try{localStorage.setItem(key,JSON.stringify(values));panel.hidden=true;button.setAttribute('aria-expanded','false')}catch{save.textContent='Storage unavailable'}};const reset=document.createElement('button');reset.textContent='Reset';reset.onclick=()=>{values={...defaults};panel.querySelectorAll('input').forEach((e,i)=>{e.value=values[fields[i][0]];e.dispatchEvent(new Event('input'))});apply()};actions.append(save,reset);panel.append(actions);const note=document.createElement('p');note.textContent='Saves in this browser. Tell me when ready to make the crop the site default.';panel.append(note);document.querySelector('.introduction').append(panel);button.setAttribute('aria-expanded','false');button.onclick=()=>{panel.hidden=!panel.hidden;button.setAttribute('aria-expanded',String(!panel.hidden))};apply();
+}
+init();new MutationObserver(init).observe(document.body,{childList:true});
+})();

@@ -16,6 +16,7 @@
 <script src="portrait-size.js" defer></script>
 <script src="gallery.js" defer></script>
 <script src="navigation.js" defer></script>
+<script src="project-editor.js" defer></script>
 <link rel="stylesheet" href="background.css">
 <script type="module" src="background.js"></script>
 </head>
@@ -28,33 +29,33 @@
   <main id="main" class="projects-main" aria-label="Projects">
 <article class="portfolio-project">
  <div class="project-image-placeholder" role="img" aria-label="FPGA Camera Vision Accelerator image to be added"></div>
- <div class="project-copy"><h2>FPGA Camera Vision Accelerator</h2><p class="project-skills">Verilog, FPGA, Computer Vision</p>
+ <div class="project-copy"><h2>FPGA Camera Vision Accelerator</h2><div class="project-skills" aria-label="Skills and tools"><span>Verilog</span><span>FPGA</span><span>Digital Design</span><span>Clock-Domain Crossing</span><span>BRAM</span><span>Image Processing</span></div>
  <p class="project-overview">A real-time camera system that displays edge detection and feature overlays on a VGA monitor. It brings image processing directly into hardware, with pipelines designed to process one pixel per clock.</p>
- <a class="project-read-more" data-page-link href="project-fpga-vision.html">Read more...<span class="sr-only"> about FPGA Camera Vision Accelerator</span></a>
+ <div class="project-expansion-row"><details class="project-expansion"><summary><span class="expand-label">Read more...</span><span class="collapse-label">Show less</span></summary><div class="project-expanded-content"><p><strong>Problem / Inspiration:</strong> Process live camera images directly on an FPGA, including edge and feature detection.</p><p><strong>Contributions:</strong> Built on the Nexys A7-100T with an OV7670 camera, asynchronous clock-domain crossing, and BRAM frame buffering. The design supports Sobel filtering, FAST-9 corner detection, and ORB descriptors, with timing closed at 100 MHz.</p><p><strong>Results / Outcomes:</strong> Produced 640 × 480 VGA output and closed timing at 100 MHz. The design supports up to 384 ORB keypoints per frame.</p></div></details><div class="project-links" aria-label="Project links"><span>Links</span><span class="links-placeholder">Coming soon</span></div></div>
  </div></article>
 <article class="portfolio-project">
  <div class="project-image-placeholder" role="img" aria-label="Scrambler Humanoid Robot image to be added"></div>
- <div class="project-copy"><h2>Scrambler Humanoid Robot</h2><p class="project-skills">JAX, Reinforcement Learning, MuJoCo</p>
+ <div class="project-copy"><h2>Scrambler Humanoid Robot</h2><div class="project-skills" aria-label="Skills and tools"><span>JAX</span><span>MuJoCo</span><span>Reinforcement Learning</span><span>PPO</span><span>Computer Vision</span></div>
  <p class="project-overview">A reinforcement-learning pipeline exploring how a humanoid robot could balance and crawl on steep terrain. The project combines simulated locomotion with a vision-based approach to evaluating grip.</p>
- <a class="project-read-more" data-page-link href="project-scrambler.html">Read more...<span class="sr-only"> about Scrambler Humanoid Robot</span></a>
+ <div class="project-expansion-row"><details class="project-expansion"><summary><span class="expand-label">Read more...</span><span class="collapse-label">Show less</span></summary><div class="project-expanded-content"><p><strong>Problem / Inspiration:</strong> Explore humanoid balancing and crawling for steep-terrain locomotion.</p><p><strong>Contributions:</strong> Developed a two-stage PPO pipeline for the 29-DOF Unitree G1, targeting slopes of 30–45 degrees in simulation. An ArUco-based vision pipeline tracks compliant-hand deformation to estimate grip quality. The project placed second at Himalaya Hacks; these are development targets, not measured physical deployment results.</p><p><strong>Results / Outcomes:</strong> Placed second at Himalaya Hacks. The locomotion pipeline targeted 30–45° slopes; physical performance results are not established.</p></div></details><div class="project-links" aria-label="Project links"><span>Links</span><span class="links-placeholder">Coming soon</span></div></div>
  </div></article>
 <article class="portfolio-project">
  <div class="project-image-placeholder" role="img" aria-label="UNIT Fitness image to be added"></div>
- <div class="project-copy"><h2>UNIT Fitness</h2><p class="project-skills">Embedded Systems, BLE, Signal Processing</p>
+ <div class="project-copy"><h2>UNIT Fitness</h2><div class="project-skills" aria-label="Skills and tools"><span>Embedded Systems</span><span>BLE</span><span>IMU</span><span>Load Cells</span><span>Signal Processing</span></div>
  <p class="project-overview">A retrofit sensor system for weight-stack machines that sends workout data to an iOS app. It explores automatic rep, set, and effort tracking without manual logging.</p>
- <a class="project-read-more" data-page-link href="project-unit-fitness.html">Read more...<span class="sr-only"> about UNIT Fitness</span></a>
+ <div class="project-expansion-row"><details class="project-expansion"><summary><span class="expand-label">Read more...</span><span class="collapse-label">Show less</span></summary><div class="project-expanded-content"><p><strong>Problem / Inspiration:</strong> Track repetitions, sets, and effort on weight-stack machines without manual logging.</p><p><strong>Contributions:</strong> The system streams IMU and HX711 load-cell data over BLE. Real-time motion segmentation isolates concentric movement, while a regression model trained on more than 50 lat-pulldown sets estimates proximity to muscular failure.</p><p><strong>Results / Outcomes:</strong> Developed the sensor-to-app tracking system and an effort-estimation model trained on more than 50 lat-pulldown sets.</p></div></details><div class="project-links" aria-label="Project links"><span>Links</span><span class="links-placeholder">Coming soon</span></div></div>
  </div></article>
 <article class="portfolio-project">
  <div class="project-image-placeholder" role="img" aria-label="Glyph Robotics Demo image to be added"></div>
- <div class="project-copy"><h2>Glyph Robotics Demo</h2><p class="project-skills">ROS 2, Nav2, Systems Integration</p>
+ <div class="project-copy"><h2>Glyph Robotics Demo</h2><div class="project-skills" aria-label="Skills and tools"><span>ROS 2</span><span>Nav2</span><span>Path Planning</span><span>Systems Integration</span><span>LED Displays</span></div>
  <p class="project-overview">An autonomous drink-dispensing system mounted on a quadruped robot. It combines mobile ordering, navigation, and a playful LED fluid display into one demonstration.</p>
- <a class="project-read-more" data-page-link href="project-glyph.html">Read more...<span class="sr-only"> about Glyph Robotics Demo</span></a>
+ <div class="project-expansion-row"><details class="project-expansion"><summary><span class="expand-label">Read more...</span><span class="collapse-label">Show less</span></summary><div class="project-expanded-content"><p><strong>Problem / Inspiration:</strong> Create an autonomous drink-delivery demonstration for USC Terra Labs demo day.</p><p><strong>Contributions:</strong> Led a five-person team at USC Terra Labs to build the Unitree Go2-based demo. The system integrates Nav2 path planning, three soda flavors, a mobile ordering interface, and a real-time fluid simulation on LED matrices.</p><p><strong>Results / Outcomes:</strong> Delivered the club demonstration, combining robot navigation, drink dispensing, mobile ordering, and LED visualization.</p></div></details><div class="project-links" aria-label="Project links"><span>Links</span><span class="links-placeholder">Coming soon</span></div></div>
  </div></article>
 <article class="portfolio-project">
  <div class="project-image-placeholder" role="img" aria-label="Star Wars Hand Scanner image to be added"></div>
- <div class="project-copy"><h2>Star Wars Hand Scanner</h2><p class="project-skills">Mechatronics, Capacitive Sensing, Electrical Design</p>
+ <div class="project-copy"><h2>Star Wars Hand Scanner</h2><div class="project-skills" aria-label="Skills and tools"><span>Electrical Design</span><span>Capacitive Sensing</span><span>Stepper Motors</span><span>Mechatronics</span><span>System Integration</span></div>
  <p class="project-overview">A touch-reactive hand scanner built for a public Star Wars exhibit. The installation synchronizes sensing, lights, and motion to create a reliable visitor interaction.</p>
- <a class="project-read-more" data-page-link href="project-hand-scanner.html">Read more...<span class="sr-only"> about Star Wars Hand Scanner</span></a>
+ <div class="project-expansion-row"><details class="project-expansion"><summary><span class="expand-label">Read more...</span><span class="collapse-label">Show less</span></summary><div class="project-expanded-content"><p><strong>Problem / Inspiration:</strong> Create a responsive, reliable interaction for visitors entering a public Star Wars exhibit.</p><p><strong>Contributions:</strong> Served as electrical lead for the installation at the Ronald Reagan Presidential Library. The system combines capacitive touch sensors, stepper-driven linear actuation, and LEDs, with eight-hour uptime reported in the experience record.</p><p><strong>Results / Outcomes:</strong> Deployed at the Ronald Reagan Presidential Library, with eight-hour uptime reported in the experience record.</p></div></details><div class="project-links" aria-label="Project links"><span>Links</span><span class="links-placeholder">Coming soon</span></div></div>
  </div></article>
 </main>
 </body>

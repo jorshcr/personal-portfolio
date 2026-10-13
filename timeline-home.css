@@ -13,7 +13,7 @@
 .home-timeline .dot { position:absolute; left:var(--pos); top:50%; width:14px; height:14px; margin:-7px; padding:0; border:1px solid #ccc; border-radius:50%; background:white; cursor:pointer; z-index:2; }
 .home-timeline .dot.summer { width:10px; height:10px; margin:-5px; }
 .home-timeline .dot:after { content:''; position:absolute; inset:-12px; }
-.home-timeline .labels { position:relative; margin-top:18px; font-size:18px; color:#333; }
+.home-timeline .labels { position:relative; margin-top:18px; font-size:18px; color:var(--muted); }
 .home-timeline .labels>span { position:absolute; left:var(--pos); width:130px; transform:translateX(-50%); text-align:center; line-height:1.3; }
 .home-timeline .labels em { display:block; font-style:normal; color:#666; }
 .home-timeline .stories { position:relative; margin-top:16px; height:420px; }
@@ -22,7 +22,7 @@
 .home-timeline .checkpoint-time { color:#666; margin:0 0 16px; font-size:18px; line-height:1.4; }
 .home-timeline .experience-list { display:grid; gap:16px; }
 .home-timeline .experience-entry h2 { font-size:18px; font-weight:600; line-height:1.35; margin:0 0 4px; }
-.home-timeline .experience-description { font-size:18px; line-height:1.4; color:#444; margin:0; }
+.home-timeline .experience-description { font-size:18px; line-height:1.4; color:var(--muted); margin:0; }
 .home-timeline button:focus-visible,.home-timeline #scroller:focus-visible { outline:2px solid #111; outline-offset:4px; }
 
 /* Fit Home to the viewport; the timeline owns its remaining space. */
@@ -45,9 +45,9 @@ body.home-page { height:100dvh; min-height:0; padding-bottom:16px; overflow:hidd
 .home-timeline .experience-list { gap:10px; }
 
 /* Quieter story typography beneath the timeline. */
-.home-timeline .experience-entry h2 { font-weight:400; color:#333; }
+.home-timeline .experience-entry h2 { font-weight:400; color:var(--muted); }
 .home-timeline .experience-description { color:#666; }
-.home-timeline .continuing-label { color:#777; font-weight:400; }
+.home-timeline .continuing-label { color:var(--muted); font-weight:400; }
 .home-timeline .continuing-roles li { background:transparent; color:#666; padding:2px 0; }
 .home-timeline .continuing-roles ul { gap:6px 16px; }
 
@@ -66,3 +66,139 @@ body.home-page { height:100dvh; min-height:0; padding-bottom:16px; overflow:hidd
 .home-timeline .experience-description { line-height:1.35; }
 .home-timeline .checkpoint-time { margin-bottom:6px; line-height:1.35; }
 .home-timeline .continuing-roles { margin-top:0; }
+
+/* V2 experiment: category filters and role-start markers. */
+.home-timeline.experience-explorer { flex:0 0 300px; display:block; position:relative; margin-top:auto; padding-top:8px; }
+.experience-filters { display:flex; flex-direction:column; align-items:flex-start; gap:8px; position:relative; z-index:2; }
+.experience-filters button { padding:0 8px 0 0; border:0; border-left:3px solid transparent; padding-left:10px; background:#fff; color:var(--muted); font:400 18px/1.4 var(--font-main); cursor:pointer; }
+.experience-filters button[aria-pressed="true"] { border-left-color:#9ec7e0; color:#111; }
+.experience-filters button:hover { color:#111; }
+.experience-chart { position:absolute; left:205px; right:40px; bottom:68px; }
+.experience-markers { position:relative; height:0; }
+.experience-axis { height:4px; background:#beddf2; position:relative; }
+.experience-axis i { position:absolute; top:50%; width:12px; height:12px; border-radius:50%; border:1px solid #9ec7e0; background:#beddf2; transform:translate(-50%,-50%); }
+.experience-axis i:last-child { width:16px; height:16px; }
+.experience-years { position:relative; display:flex; justify-content:space-between; margin-top:18px; }
+.experience-years span { position:absolute; width:125px; text-align:center; transform:translateX(-50%); font-size:18px; line-height:1.35; color:var(--muted); }
+.experience-years span:nth-child(1) { left:0; }.experience-years span:nth-child(2) { left:25%; }.experience-years span:nth-child(3) { left:50%; }.experience-years span:nth-child(4) { left:75%; }.experience-years span:nth-child(5) { left:100%; }
+.experience-years em { display:block; font-style:normal; color:var(--muted); }
+.role-marker { position:absolute; bottom:0; height:var(--stem); width:1px; background:#555; }
+.role-marker::after { content:''; position:absolute; bottom:-4px; left:-3px; width:7px; height:7px; border-radius:50%; background:#555; }
+.role-marker-label { position:absolute; bottom:calc(100% + 5px); width:160px; font-size:18px; line-height:1.2; color:var(--muted); }
+.role-marker:focus-visible { outline:2px solid #9ec7e0; outline-offset:4px; }
+
+/* Full-width timeline with filters beside the story area below. */
+.home-timeline.experience-explorer { flex:0 0 355px; }
+.experience-chart { left:0; right:0; bottom:165px; }
+.experience-years span:first-child { transform:none; text-align:left; }
+.experience-years span:last-child { transform:translateX(-100%); text-align:right; }
+.experience-lower { position:absolute; left:0; right:0; bottom:0; min-height:100px; display:grid; grid-template-columns:210px 1fr; gap:28px; align-items:start; }
+.experience-selection h2 { font-size:18px; font-weight:400; line-height:1.35; margin:0 0 4px; }
+.experience-selection p { font-size:18px; color:#666; margin:0; line-height:1.35; }
+.role-marker { cursor:pointer; }
+.role-marker-label { font-size:14px; }
+.experience-years span:nth-child(2) { left:33.3333%; }
+.experience-years span:nth-child(3) { left:66.6667%; }
+.experience-years span:nth-child(4) { left:100%; }
+
+/* Selected milestones: compact overview, optional full history. */
+.selected-experiences { margin-top:40px; padding-top:28px; padding-bottom:8px; }
+.milestone-highlights { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:18px; border-top:3px solid #beddf2; }
+.milestone-highlight { position:relative; padding-top:16px; }
+.milestone-highlight::before { content:''; position:absolute; left:0; top:-7px; width:11px; height:11px; border-radius:50%; background:#beddf2; }
+.milestone-highlight h2 { font:700 18px/1.3 var(--font-main); margin:0 0 6px; }
+.milestone-year,.milestone-org { font-size:14px; line-height:1.4; color:#666; margin:0 0 8px; }
+.milestone-description { font-size:16px; line-height:1.4; margin:0; color:var(--muted); }
+.all-experiences { font-size:16px; margin-top:18px; }
+.all-experiences summary { cursor:pointer; width:fit-content; }
+.all-experiences summary:focus-visible { outline:2px solid #111; outline-offset:4px; }
+.experience-history { margin-top:20px; max-height:300px; overflow-y:auto; padding-right:16px; }
+.experience-history section { margin-bottom:24px; }
+.experience-history h3,.experience-history h4 { font-size:18px; line-height:1.35; font-weight:700; margin:0 0 5px; }
+.experience-history article { border-left:2px solid #beddf2; padding-left:16px; margin:16px 0; }
+.experience-history p { font-size:16px; line-height:1.4; margin:0 0 6px; }
+.experience-history .history-date { font-size:14px; color:#666; }
+body.home-page:has(.all-experiences[open]) { height:auto; min-height:100dvh; overflow:visible; }
+
+.selected-experiences .milestone-highlight h2,
+.selected-experiences .experience-history h3,
+.selected-experiences .experience-history h4 { font-size:16px; font-weight:600; }
+.selected-experiences,
+.selected-experiences p,
+.selected-experiences .all-experiences,
+.selected-experiences summary { font-size:14px; }
+.milestone-filters { display:flex; gap:10px; margin-bottom:24px; }
+.milestone-filters button { font:400 14px/1.4 var(--font-main); padding:5px 12px; border:1px solid #ddd; border-radius:4px; color:#666; background:#fff; cursor:pointer; }
+.milestone-filters button[aria-pressed="true"] { background:#edf5fa; border-color:#9ec7e0; color:#222; }
+.milestone-filters button:focus-visible { outline:2px solid #222; outline-offset:3px; }
+.milestone-highlights { grid-template-columns:repeat(var(--milestone-count,5),minmax(0,1fr)); min-height:260px; align-items:start; }
+
+/* Home and expanded history share the normal page scroll. */
+body.home-page,
+body.home-page:has(.all-experiences[open]) {
+  height:auto;
+  min-height:100dvh;
+  overflow:visible;
+}
+.selected-experiences .experience-history {
+  max-height:none;
+  overflow:visible;
+  padding-right:0;
+}
+
+/* Fixed calendar anchors with muted, category-specific branches below. */
+.milestone-highlights.fixed-year-timeline {
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:22px;
+  border-top:0;
+  min-height:280px;
+  position:relative;
+}
+.fixed-year-timeline::before { content:''; position:absolute; left:0; right:0; top:34px; height:2px; background:#beddf2; }
+.year-column { position:relative; }
+.selected-experiences .fixed-year { font:600 16px/1.3 var(--font-main); margin:0 0 26px; }
+.year-column::before { content:''; position:absolute; top:30px; left:0; width:10px; height:10px; border-radius:50%; background:#beddf2; }
+.shared-milestone { height:32px; font-size:14px; color:var(--muted); }
+.year-branches { display:flex; flex-direction:column; gap:14px; }
+.experience-branch { position:relative; border-left:1px solid #d0d0d0; padding:12px 0 0 12px; margin-left:4px; }
+.experience-branch::before { content:''; position:absolute; left:-4px; top:0; width:7px; height:7px; border-radius:50%; background:#b5b5b5; }
+.selected-experiences .experience-branch p { font-size:14px; line-height:1.35; font-weight:400; color:var(--muted); margin:0; }
+.selected-experiences .experience-branch .branch-org { color:var(--muted); }
+
+/* Restore the original blue rail, dots, and smaller dates beneath it. */
+.fixed-year-timeline::before { top:0; height:3px; }
+.year-column::before { top:-4px; width:11px; height:11px; background:#beddf2; }
+.selected-experiences .fixed-year { font:400 14px/1.4 var(--font-main); color:#666; margin:0 0 8px; padding-top:16px; }
+.timeline-endpoint-label { position:absolute; right:0; top:16px; font:400 14px/1.4 var(--font-main); color:#666; }
+.year-branches { gap:0; border-left:1px solid #ccc; margin-left:4px; }
+.experience-branch { border-left:0; margin-left:0; padding:8px 0 12px 14px; }
+.experience-branch::before { left:0; top:17px; width:9px; height:1px; border-radius:0; background:#ccc; }
+
+/* Simple stems with centered text below, without side branches. */
+.year-branches { position:relative; border-left:0; margin-left:0; padding-top:24px; text-align:center; }
+.year-branches:has(.experience-branch)::before { content:''; position:absolute; top:0; left:50%; width:1px; height:20px; background:#ccc; }
+.experience-branch { padding:4px 0 10px; }
+.experience-branch::before { display:none; }
+
+.selected-experiences .all-experiences summary {
+  display:block;
+  list-style:none;
+  font:400 18px/1.35 var(--font-main);
+  color:var(--muted);
+}
+.all-experiences summary::-webkit-details-marker { display:none; }
+.all-experiences summary::marker { content:''; }
+
+/* Dark calendar axis with half-year ticks and an arrow to the current date. */
+.milestone-highlights.fixed-year-timeline {
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:0;
+  padding:24px 48px 0 0;
+  margin-top:34px;
+}
+.fixed-year-timeline::before,.year-column::before { display:none; }
+.calendar-axis { position:absolute; top:0; left:0; width:100%; height:52px; overflow:visible; }
+.calendar-axis path { fill:none; stroke:#111; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+.selected-experiences .fixed-year { text-align:center; color:#111; }
+.shared-milestone { text-align:center; color:#111; }
+.timeline-endpoint-label { top:-24px; right:0; color:#111; font:400 14px/1.4 var(--font-main); }

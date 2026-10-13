@@ -1,55 +1,56 @@
 (() => {
- gsap.registerPlugin(ScrollTrigger);
- let context,observer;
- const sources=new WeakMap();
- window.destroyHomeTimeline=()=>{observer?.disconnect();context?.revert();observer=null;context=null;};
+ const approvedDraft={"leadership": [{"id": "4e516c27-73e3-44c2-940c-ad0b0eae594c", "x": 18.5, "y": 122, "items": [{"title": "Became Outreach Director for FTC robotics club", "text": ""}]}, {"id": "8ac27f78-96ee-48c4-a0b1-8ff832bbcf9b", "x": 47, "y": 123, "items": [{"title": "Started an Engineering Education program ", "text": ""}]}, {"id": "fd22b5fa-d248-48f1-90cd-694b8e7abb0e", "x": 79.5, "y": 123, "items": [{"title": "Became Programming Chair for Theta Tau. Also started Robotics Club at USC.", "text": ""}]}, {"id": "3cbde0e5-50b7-4e48-b71b-c002feb81f27", "x": 91.5, "y": 227, "items": [{"title": "Still Leading Terra Labs as Director of Technology", "text": ""}]}], "technical": [{"id": "b69c5323-ed46-4601-b8a2-abd20d133f1b", "x": 42.5, "y": 121, "items": [{"title": "Test Engineering  Intern @ Space Vector Corporation", "text": ""}]}, {"id": "687914a4-c3e7-4dd3-ae8b-57e33c013148", "x": 67, "y": 121, "items": [{"title": "Interned for Test again @ Space Vector Corporation", "text": ""}]}, {"id": "e9e4b737-5373-4d2d-a43b-1dd51caea04a", "x": 88, "y": 123, "items": [{"title": "EE Intern @", "text": "Northrop Grumman"}]}]};
+ window.destroyHomeTimeline=()=>{};
  window.initHomeTimeline=()=>{
-  window.destroyHomeTimeline();
-  const root=document.querySelector('.home-timeline');if(!root)return;
-  const scroller=root.querySelector('#scroller'),stories=root.querySelector('.stories'),dots=[...root.querySelectorAll('.dot')];
-  if(!sources.has(root))sources.set(root,[...stories.children].map(a=>a.cloneNode(true)));
-  const slides=[],stages=[],starts=[];
-  sources.get(root).forEach((source,stage)=>{
-   starts.push(slides.length);
-   const entries=[...source.querySelectorAll('.experience-entry')];
-   const continuing=source.querySelector('.continuing-roles');
-   const items=entries.length?[...entries]:[];
-   if(continuing)items.push(continuing);
-   if(!items.length){const note=source.querySelector('.experience-description');if(note)items.push(note);}
-   items.forEach(item=>{
-    const article=document.createElement('article');
-    article.append(source.querySelector('.checkpoint-time').cloneNode(true),item.cloneNode(true));
-    slides.push(article);stages.push(stage);
+  const root=document.querySelector('.selected-experiences');if(!root)return;
+  const target=root.querySelector('.milestone-highlights');
+  const buttons=[...root.querySelectorAll('[data-milestone-filter]')];
+  target.classList.add('fixed-year-timeline');
+  target.replaceChildren();
+  const endpointLabel=document.createElement('span');
+  endpointLabel.className='timeline-endpoint-label';
+  endpointLabel.textContent='Current';
+  target.append(endpointLabel);
+  const ns='http://www.w3.org/2000/svg';
+  const axis=document.createElementNS(ns,'svg');
+  axis.classList.add('calendar-axis');axis.setAttribute('viewBox','0 0 800 52');axis.setAttribute('aria-hidden','true');
+  const path=document.createElementNS(ns,'path');
+  path.setAttribute('d','M1 1 V47 M1 24 H798 M790 16 L798 24 L790 32 '+[94,188,282,376,470,564,658,752].map(x=>`M${x} 13 V35`).join(' '));
+  axis.append(path);target.append(axis);
+  // Calendar anchors and shared life milestone never change with the filter.
+  const branches=[];
+  for(const year of [2023,2024,2025,2026]){
+   const column=document.createElement('section');column.className='year-column';
+   const heading=document.createElement('h2');heading.className='fixed-year';heading.textContent=year;
+   const anchor=document.createElement('div');anchor.className='shared-milestone';
+   const list=document.createElement('div');list.className='year-branches';list.setAttribute('aria-label',year+' experiences');
+   column.append(heading,anchor,list);target.append(column);branches.push({year,list});
+  }
+  const otherMilestones=document.createElement('div');
+  otherMilestones.className='other-milestones';
+  const personalEvents=[
+   {x:47,depth:48,text:'Joined student run company: DMS Solutions'},
+   {x:235,depth:102,text:'Became Woodshop department manager'},
+   {x:423,depth:48,text:'Started first business: AP Chem Tutoring'},
+   {x:705,depth:48,text:'Co-founded first startup: UNIT Fitness'}
+  ];
+  target.append(otherMilestones);
+  function show(category){
+   target.classList.add('show-other');
+   otherMilestones.hidden=false;
+   otherMilestones.replaceChildren();
+   buttons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.milestoneFilter===category)));
+   const events=category==='other'?personalEvents.map(e=>({x:e.x/8,depth:e.depth,lines:[e.text]})):
+    approvedDraft[category].map(e=>({x:e.x,depth:e.y-72,lines:e.items.flatMap(item=>[item.title,item.text]).filter(Boolean)}));
+   events.forEach(event=>{
+    const milestone=document.createElement('article');milestone.className='other-milestone';
+    milestone.style.left=event.x+'%';milestone.style.setProperty('--stem-height',event.depth+'px');
+    const text=document.createElement('p');
+    event.lines.forEach((line,i)=>{if(i)text.append(document.createElement('br'));text.append(document.createTextNode(line));});
+    milestone.append(text);otherMilestones.append(milestone);
    });
-  });
-  stories.replaceChildren(...slides);
-  const total=slides.length;
-  root.querySelector('#runway').style.height=(scroller.clientHeight+total*380)+'px';
-  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  context=gsap.context(()=>{
-   gsap.set(slides,{autoAlpha:0,y:0});gsap.set(slides[0],{autoAlpha:1});
-   gsap.set(dots,{scale:1,backgroundColor:'#fff',borderColor:'#ccc',boxShadow:'none'});
-   const lit={scale:reduced?1:1.3,backgroundColor:'#beddf2',borderColor:'#8eafc5'};
-   gsap.set(dots[0],lit);gsap.set('.fill',{scaleX:0,transformOrigin:'left'});
-   const tl=gsap.timeline({defaults:{ease:'none'},scrollTrigger:{trigger:root.querySelector('#runway'),scroller,start:'top top',end:()=>'+='+(scroller.scrollHeight-scroller.clientHeight),scrub:reduced?true:.25,invalidateOnRefresh:true,onUpdate:self=>{
-    const active=Math.min(total-1,Math.floor(self.progress*total+.001));
-    slides.forEach((s,i)=>s.setAttribute('aria-hidden',i!==active));
-    dots.forEach((d,i)=>d.setAttribute('aria-current',i===stages[active]?'step':'false'));
-   }}});
-   for(let i=1;i<total;i++){
-    tl.to(slides[i-1],{autoAlpha:0,duration:.14},i-.28)
-      .to(slides[i],{autoAlpha:1,duration:.14},i-.14);
-   }
-   for(let i=1;i<dots.length;i++){
-    tl.to('.fill',{scaleX:i/(dots.length-1),duration:starts[i]-starts[i-1]},starts[i-1])
-      .to(dots[i-1],{scale:1,duration:.15},starts[i]-.15)
-      .to(dots[i],{...lit,duration:.15},starts[i]-.15);
-   }
-   tl.to({},{duration:1},total-1);
-  },root);
-  observer=new ResizeObserver(()=>{root.querySelector('#runway').style.height=(scroller.clientHeight+total*380)+'px';ScrollTrigger.refresh();});observer.observe(scroller);
-  ScrollTrigger.refresh();
-  dots.forEach((d,i)=>d.onclick=()=>scroller.scrollTo({top:(scroller.scrollHeight-scroller.clientHeight)*starts[i]/total,behavior:reduced?'instant':'smooth'}));
+  }
+  buttons.forEach(b=>b.onclick=()=>show(b.dataset.milestoneFilter));show('leadership');
  };
  window.initHomeTimeline();
 })();

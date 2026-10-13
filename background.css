@@ -24,3 +24,237 @@ body.portfolio-page::after {
 body.portfolio-page > header,
 body.portfolio-page > main { position:relative; z-index:1; background:#fff; }
 .home-timeline .scene { background:#fff; }
+
+/* Home palette: paper, ink, and one pastel accent. */
+body.home-page {
+  --paper:#ffffff;
+  --ink:#111111;
+  --accent:#beddf2;
+  --muted:var(--ink);
+  --line:var(--accent);
+  color:var(--ink);
+  background:var(--paper);
+}
+body.home-page .site-wave { background:var(--paper); }
+body.home-page .bio,
+body.home-page .selected-experiences p,
+body.home-page .selected-experiences h2,
+body.home-page .selected-experiences h3,
+body.home-page .selected-experiences h4,
+body.home-page .selected-experiences summary,
+body.home-page .shared-milestone,
+body.home-page .timeline-endpoint-label { color:var(--ink); }
+body.home-page .milestone-filters button {
+  color:var(--ink);
+  background:var(--paper);
+  border-color:var(--accent);
+}
+body.home-page .milestone-filters button[aria-pressed="true"] { background:var(--accent); }
+body.home-page .year-branches::before { background:var(--ink); }
+body.home-page .experience-history article { border-color:var(--accent); }
+body.home-page .calendar-axis path { stroke:var(--ink); }
+body.home-page .site-header a:hover { opacity:1; color:var(--ink); text-decoration:underline; }
+body.home-page :focus-visible { outline-color:var(--ink); }
+body.home-page .portrait { background:var(--paper); }
+
+body.home-page .selected-experiences .experience-branch .branch-org { color:var(--ink); }
+
+/* Consistent neutral and inverted ASCII surround. */
+body.portfolio-page { --muted:#666666; }
+body.portfolio-page .site-wave { background:#111111; }
+body.home-page .selected-experiences .experience-branch .branch-org,
+body.home-page .selected-experiences .history-date { color:var(--muted); }
+
+/* Fine gray rules with rounded ends. */
+body.home-page .calendar-axis path {
+  stroke:var(--muted);
+  stroke-width:1.5;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+body.home-page .year-branches::before { background:var(--muted); }
+
+/* Personal milestones: tick-aligned dots, simple stems, and captions matching the leadership typography. */
+.other-milestones { position:absolute; inset:0; pointer-events:none; }
+.other-milestones[hidden] { display:none; }
+.other-milestone { position:absolute; top:24px; width:0; }
+.other-milestone::before { content:''; position:absolute; left:-3px; top:-3px; width:6px; height:6px; border-radius:50%; background:var(--ink); }
+.other-milestone::after { content:''; position:absolute; left:-.375px; top:0; width:.75px; height:var(--stem-height); background:var(--muted); }
+body.home-page .selected-experiences .other-milestone p { position:absolute; top:var(--stem-height); left:0; transform:translateX(-50%); width:180px; margin:8px 0 0; font:400 14px/1.35 var(--font-main); text-align:center; color:var(--ink); }
+.show-other .year-branches,.show-other .shared-milestone { visibility:hidden; }
+.selected-experiences .show-other .fixed-year { position:relative; top:-48px; }
+
+/* Shared stem treatment: fine gray line ending in a hollow circle. */
+body.home-page .year-branches:has(.experience-branch)::after {
+  content:'';
+  position:absolute;
+  top:17px;
+  left:calc(50% - 3px);
+  width:6px;
+  height:6px;
+  border:1px solid var(--muted);
+  border-radius:50%;
+  background:var(--paper);
+  box-sizing:border-box;
+}
+body.home-page .other-milestone::before {
+  top:calc(var(--stem-height) - 3px);
+  left:-3px;
+  width:6px;
+  height:6px;
+  border:1px solid var(--muted);
+  border-radius:50%;
+  background:var(--paper);
+  box-sizing:border-box;
+  z-index:1;
+}
+
+/* Keep the endpoint label on the same baseline as the year labels. */
+body.home-page .timeline-endpoint-label { top:40px; }
+body.home-page .show-other .timeline-endpoint-label { top:-8px; }
+
+/* Stems attach between calendar ticks, with hollow circles on the rail. */
+body.home-page .year-branches { transform:translateX(47px); }
+body.home-page .year-branches::before,
+body.home-page .year-branches::after { display:none; }
+body.home-page .year-column:has(.experience-branch)::before {
+  display:block; content:''; position:absolute;
+  left:calc(50% + 46.5px); top:0; width:1px; height:100px;
+  border-radius:0; background:var(--muted);
+}
+body.home-page .year-column:has(.experience-branch)::after {
+  content:''; position:absolute; left:calc(50% + 44px); top:-3px;
+  width:6px; height:6px; box-sizing:border-box; border:1px solid var(--muted);
+  border-radius:50%; background:var(--paper);
+}
+body.home-page .year-column .fixed-year,
+body.home-page .year-column .shared-milestone { position:relative; z-index:1; }
+body.home-page .other-milestone::before { top:-3px; }
+body.home-page .show-other .year-column::before,
+body.home-page .show-other .year-column::after { display:none; }
+body.home-page .year-branches:has(.experience-branch)::after { display:none; }
+
+/* All experience stems use the Woodshop milestone's 1px rule. */
+body.home-page .year-column:has(.experience-branch)::before { width:1px; }
+body.home-page .other-milestone::after { width:1px; left:-.5px; }
+
+/* Consistent Woodshop gray across all experience stems. */
+body.home-page .year-column:has(.experience-branch)::before,
+body.home-page .year-branches::before,
+body.home-page .other-milestone::after { background:#666666; }
+
+/* Experience stems only; calendar rail and ticks retain their stroke. */
+body.home-page .year-column:has(.experience-branch)::before {
+  width:.75px;
+  left:calc(50% + 46.625px);
+}
+body.home-page .year-branches::before { width:.75px; }
+body.home-page .other-milestone::after { width:.75px; left:-.375px; }
+
+/* Calendar labels match the experience summary typography. */
+body.home-page .selected-experiences .fixed-year,
+body.home-page .selected-experiences .timeline-endpoint-label {
+  font:400 14px/1.35 var(--font-main);
+  color:var(--ink);
+}
+
+body.home-page .selected-experiences .fixed-year,
+body.home-page .selected-experiences .timeline-endpoint-label,
+body.home-page .milestone-filters button { font-size:18px; }
+
+/* A little breathing room between the calendar rail and its labels. */
+body.home-page .selected-experiences .fixed-year { padding-top:20px; }
+body.home-page .timeline-endpoint-label { top:44px; }
+body.home-page .selected-experiences .show-other .fixed-year { top:-60px; }
+body.home-page .show-other .timeline-endpoint-label { top:-16px; }
+
+body.home-page .milestone-filters button { font-size:14px; }
+
+/* Vertical crop inside the existing column: text geometry stays fixed. */
+body.home-page .portrait { width:200px; height:250px; aspect-ratio:4 / 5; }
+body.home-page .portrait img { width:465px; height:310px; left:-113.15px; top:-49.8px; }
+
+/* Other shares the below-rail dates used by the other filters. */
+body.home-page .selected-experiences .show-other .fixed-year { top:0; }
+body.home-page .show-other .timeline-endpoint-label { top:44px; }
+body.home-page .other-milestone::after { height:calc(var(--stem-height) + 48px); }
+body.home-page .selected-experiences .other-milestone p { top:calc(var(--stem-height) + 48px); }
+
+/* Reserve space for the approved lower Leadership caption across filters. */
+body.home-page .milestone-highlights.fixed-year-timeline { min-height:320px; }
+
+/* Timeline is temporarily hidden; full experience history stays visible. */
+body.home-page .milestone-filters[hidden],
+body.home-page .milestone-highlights[hidden] { display:none; }
+body.home-page .all-experiences { margin-top:0; }
+body.home-page .experience-history { margin-top:0; }
+
+/* Category rows: chronological experience groups on Home. */
+.home-experience-rows { margin-top:0; font:400 14px/1.4 var(--font-main); }
+.experience-category { display:grid; grid-template-columns:150px 1fr; gap:28px; margin-bottom:36px; }
+.experience-category h2 { font:400 18px/1.4 var(--font-main); margin:0; color:var(--ink); }
+.experience-category h3 { font:600 16px/1.4 var(--font-main); margin:0 0 3px; color:var(--ink); }
+.experience-category article { margin-bottom:18px; }
+.experience-category p { font:400 14px/1.4 var(--font-main); color:var(--muted); margin:0; }
+.experience-category .experience-org { margin-bottom:5px; }
+
+/* Full-width category headings above two columns of experiences. */
+.experience-category { display:block; }
+.experience-category h2 { margin-bottom:20px; }
+.experience-category > div { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:40px; row-gap:24px; }
+.experience-category article { margin:0; }
+
+/* Each experience pairs a stacked identity with its description. */
+.experience-category > div { grid-template-columns:1fr; row-gap:24px; }
+.experience-category article { display:grid; grid-template-columns:280px minmax(0,1fr); gap:32px; align-items:start; }
+.experience-category .experience-company { color:var(--ink); }
+
+.experience-category .experience-identity h3,
+.experience-category .experience-identity .experience-company {
+  font:500 16px/1.4 var(--font-main);
+  color:var(--ink);
+}
+
+/* Compact identity blocks with more readable descriptions. */
+.experience-category .experience-identity h3 { margin-bottom:0; }
+.experience-category .experience-identity h3,
+.experience-category .experience-identity .experience-company { line-height:1.2; }
+.experience-category article > p { font-size:16px; line-height:1.4; }
+
+/* Shared body-copy treatment for the introduction and experience descriptions. */
+body.home-page .bio,
+body.home-page .experience-category article > p {
+  font-size:16px;
+  color:#444444;
+  line-height:1.4;
+}
+
+/* Reference layout: indented entries with more vertical breathing room. */
+.home-experience-rows .experience-category { margin-bottom:52px; }
+.home-experience-rows .experience-category > div { padding-left:72px; row-gap:36px; }
+.home-experience-rows .experience-category article { grid-template-columns:202px minmax(0,1fr); gap:32px; }
+
+/* In-place photo editing; reserved intro height keeps surrounding text fixed. */
+body.home-page .introduction { position:relative; min-height:250px; }
+.photo-edit-toggle { position:absolute; bottom:8px; left:8px; z-index:2; border:1px solid #666; background:#fff; color:#111; border-radius:3px; padding:5px 8px; font:400 12px var(--font-main); cursor:pointer; }
+.photo-edit-panel { position:absolute; top:258px; left:0; width:280px; z-index:20; background:#fff; border:1px solid #666; padding:16px; box-shadow:0 4px 18px #0002; font:400 14px/1.4 var(--font-main); }
+.photo-edit-panel[hidden] { display:none; }
+.photo-edit-panel label { display:block; margin-bottom:10px; }
+.photo-edit-panel input { display:block; width:100%; accent-color:#111; }
+.photo-edit-actions { display:flex; gap:8px; }
+.photo-edit-actions button { font:inherit; padding:5px 10px; background:#fff; border:1px solid #666; cursor:pointer; }
+.photo-edit-panel p { margin:10px 0 0; font-size:12px; color:#444; }
+
+body.home-page .experience-category h2 {
+  font-size:16px;
+  color:#444444;
+}
+
+/* Vertically align each identity block with its description. */
+.home-experience-rows .experience-category article { align-items:center; }
+
+/* Approved photo crop and spacing. */
+body.home-page .portrait { width:220px; height:180px; aspect-ratio:11 / 9; }
+body.home-page .portrait img { width:359.1px; height:239.4px; left:-43.121px; top:-46.332px; }
+body.home-page .introduction { min-height:180px; }
+body.home-page .home-experience-rows { margin-top:65px; }

@@ -12,7 +12,7 @@ function draw(){
  const softFlow={get active(){return flow.active},sample(x,y,out){flow.sample(x,y,out);out[0]*=cursorStrength;out[1]*=cursorStrength;out[2]*=cursorStrength}};
  paintLiquidSource(pixels,cols,rows,width/height,time,softFlow);
  ctx.clearRect(0,0,width,height);ctx.font=`${fontSize}px monospace`;ctx.textBaseline='top';
- for(let y=0;y<rows;y++)for(let x=0;x<cols;x++){const light=pixels[(y*cols+x)*4]/255;const glyph=chars[Math.min(chars.length-1,Math.floor(light*chars.length))];if(glyph===' ')continue;ctx.fillStyle=`rgba(24,24,24,${.48+light*.52})`;ctx.fillText(glyph,x*cellWidth,y*cellHeight);}
+ for(let y=0;y<rows;y++)for(let x=0;x<cols;x++){const light=pixels[(y*cols+x)*4]/255;const glyph=chars[Math.min(chars.length-1,Math.floor(light*chars.length))];if(glyph===' ')continue;ctx.fillStyle='#ffffff';ctx.fillText(glyph,x*cellWidth,y*cellHeight);}
 }
 function frame(now){raf=0;if(document.hidden||reduced.matches){last=0;return;}if(now-last>=50){const dt=last?Math.min(.1,(now-last)/1000):0;time+=dt*speed;flow.step(dt);draw();last=now;}raf=requestAnimationFrame(frame);}
 function sync(){cancelAnimationFrame(raf);last=0;if(reduced.matches) {flow.clear();draw();}else if(!document.hidden)raf=requestAnimationFrame(frame);}

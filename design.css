@@ -24,7 +24,7 @@ body { font-family: var(--font-main); font-size: var(--text); color: var(--ink);
 h1, .name, .wordmark { font-size: var(--title); font-weight: 700; letter-spacing: 0; line-height: 1.2; }
 h2, .timeline h2, .project-card h2, .next-project h2, nav a, .home-header nav a { font-family: var(--font-main); font-size: var(--heading); font-weight: 600; letter-spacing: 0; line-height: 1.25; }
 .bio, .eyebrow, .page-heading > p:last-child, .collection-label, .project-meta, .status, .project-card > p, .next-project > p:last-child, .tags li, .text-link, .site-footer, #timeline-hint, .art-caption, .mini-body > span, .button { font-family: var(--font-main); font-size: var(--text); letter-spacing: 0; text-transform: none; }
-.bio { color: #333333; line-height: 1.4; }
+.bio { color:var(--muted); line-height: 1.4; }
 .eyebrow, .category { font-weight: 600; }
 .project-meta, .site-footer, #timeline-hint, .art-caption { color: var(--muted); font-weight: 400; }
 .timeline-scroll { background: #eeeeee; scrollbar-color: #999999 #eeeeee; }
@@ -81,7 +81,7 @@ body.portfolio-page { padding: 0 0 clamp(28px, 10vh, 100px); }
   border: 0;
   line-height: 1.2;
 }
-.site-header .wordmark { font: 700 24px/1.2 var(--font-main); letter-spacing: 0; white-space: nowrap; }
+.site-header .wordmark { font: 600 24px/1.2 var(--font-main); letter-spacing: 0; white-space: nowrap; }
 .site-header nav { display: flex; flex: 0 0 auto; width: auto; margin-left: auto; justify-content: flex-end; gap: 34px; }
 .site-header nav a { font: 400 var(--heading)/1.25 var(--font-main); padding: 8px 0; border: 0; }
 .site-header nav a[aria-current="page"] { border: 0; }
@@ -152,4 +152,4 @@ body.portfolio-page {
 .continuing-roles { margin-top: 18px; }
 .continuing-label { display: block; margin-bottom: 8px; color: #666; font-size: 18px; }
 .continuing-roles ul { display: flex; flex-wrap: wrap; gap: 8px; width: auto; min-width: 0; margin: 0; padding: 0; list-style: none; }
-.continuing-roles li { display: block; flex: 0 1 auto; min-height: 0; padding: 5px 10px; border-radius: 6px; background: #beddf233; color: #333; font: 400 18px/1.35 var(--font-main); }
+.continuing-roles li { display: block; flex: 0 1 auto; min-height: 0; padding: 5px 10px; border-radius: 6px; background: #beddf233; color:var(--muted); font: 400 18px/1.35 var(--font-main); }
