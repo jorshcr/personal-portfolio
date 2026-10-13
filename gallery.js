@@ -20,7 +20,7 @@
     return media;
   }
   const images = {
-    'Star Wars Hand Scanner': [{src:'assets/star-wars-hand-scanner.mp4',playbackRate:2,poster:'assets/star-wars-hand-scanner-poster.jpg',alt:'Star Wars hand scanner demonstration video',caption:'Hand scanner demonstration',video:true,contain:true}],
+    'Star Wars Hand Scanner': [{src:'assets/star-wars-hand-scanner.gif',alt:'Star Wars hand scanner demonstration animation',caption:'Hand scanner demonstration',contain:true}],
     'ID 0: agentic hardware robot': [
       {src:'assets/id-0-robot.jpg',alt:'Blue and white tracked robot beside a rose and fiducial markers',caption:'',contain:true},
       {src:'assets/id-0-team.jpg',alt:'Five team members behind a Y Combinator sign',caption:'',contain:true},
@@ -50,7 +50,9 @@
   images['FPGA Camera Vision Accelerator'].forEach((slide,i)=>slide.caption=defaultCaptions[i]);
   ['Second place at Himalaya Hacks', 'ArUco grip tracking', 'Robotic hands and terrain setup', 'Introducing SCRAMBLER: an integrated robotics system'].forEach((caption,i)=>images['Scrambler Humanoid Robot'][i].caption=caption);
   images['Scrambler Humanoid Robot'].reverse();
-  const savedCaptions = {"FPGA Camera Vision Accelerator": ["Live Sobel edge detection", "Live grayscale camera feed", "Top-level system architecture", "ORB frame processing timeline"], "Scrambler Humanoid Robot": ["Project video!", "Robotic hand follower + leader setup in demo environment", "ArUco grip tracking from wrist cam", "Terra labs team pic!"], "ID 0: agentic hardware robot": ["", "", ""], "Glyph Robotics Demo": ["Glyph at demo day", "Drink dispenser and LED display", "Custom enclosure and LED matrix", "Inside the drink-dispensing system"]};
+  images['FPGA Camera Vision Accelerator'].splice(2,0,{src:'assets/fpga-mode-switch.gif',alt:'FPGA camera display changing from grayscale to edge detection',caption:'Grayscale to edge-detection transition',contain:true});
+  images['Glyph Robotics Demo'].splice(1,0,{src:'assets/glyph-fluid-sloshing.gif',alt:'Glyph LED fluid simulation sloshing as the robot moves',caption:'LED fluid simulation in motion',contain:true});
+  const savedCaptions = {"FPGA Camera Vision Accelerator": ["Live Sobel edge detection", "Live grayscale camera feed", "Switch from grayscale to sobel, and live threshold control", "Top-level system architecture", "ORB frame processing timeline"], "Scrambler Humanoid Robot": ["Project video!", "Robotic hand follower + leader setup in demo environment", "ArUco grip tracking from wrist cam", "Terra labs team pic!"], "ID 0: agentic hardware robot": ["ID0 Robot with end effectors and printed vase (from demo vid)", "Terra Labs team in front of YC sign", "Demo video submitted to judges"], "Glyph Robotics Demo": ["Glyph at demo day", "LED fluid simulation in motion", "Demo day again, side angle", "Custom enclosure during build phase, initial layup of LEDs", "Top view of enclosure & soda system before final build "], "UNIT Fitness": ["Load-cell hardware prototype", "Gym and app walkthrough · 30-second demo", "System architecture · sensing, processing, and workout metrics", "Arduino VBT precursor · RIR estimation"], "Star Wars Hand Scanner": ["Hand scanner demonstration"]};
   Object.entries(savedCaptions).forEach(([name,captions])=>captions.forEach((caption,i)=>{if(images[name]?.[i])images[name][i].caption=caption}));
   window.projectGallerySlides = images;
   window.setProjectCaptions = (name, captions) => {
