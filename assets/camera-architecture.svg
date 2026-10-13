@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="570" viewBox="0 0 1440 570" role="img" aria-labelledby="title desc">
+  <title id="title">Top Level Overview</title>
+  <desc id="desc">OV7670 camera capture crosses an asynchronous FIFO into a 100 MHz grayscale stream. Raw and Sobel processing and a shared FAST detector feed the VGA display. FAST keypoints feed grid selection while two raw frame banks supply patches for orientation and rotated BRIEF descriptor extraction.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/></marker>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; fill: #000; font-size: 16px; font-weight: 400; }
+      .title { font-size: 28px; font-weight: 600; }
+      .box { fill: #fff; stroke: #000; stroke-width: 1.4; }
+      .edge { fill: none; stroke: #000; stroke-width: 1.6; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect width="1440" height="570" fill="white"/>
+  <text x="44" y="52" class="title">Top Level Overview</text>
+
+
+  <!-- Camera input and pixel-stream distribution -->
+  <rect x="44" y="254" width="130" height="72" class="box"/>
+  <text x="109" y="284" text-anchor="middle">OV7670</text>
+  <text x="109" y="308" text-anchor="middle">YUV422</text>
+  <rect x="210" y="254" width="176" height="72" class="box"/>
+  <text x="298" y="284" text-anchor="middle">Capture</text>
+  <text x="298" y="308" text-anchor="middle">+ async FIFO</text>
+  <path d="M174 290 H210" class="edge"/>
+  <path d="M386 290 H458 V196 H500" class="edge"/>
+  <path d="M458 290 H500" class="edge"/>
+  <path d="M458 290 V424 H500" class="edge"/>
+  <circle cx="458" cy="290" r="3.3" fill="#000"/>
+  <text x="420" y="240" text-anchor="middle">8-bit</text>
+
+  <!-- Shared processing -->
+  <rect x="500" y="164" width="140" height="64" class="box"/>
+  <text x="570" y="202" text-anchor="middle">Raw / Sobel</text>
+  <rect x="500" y="258" width="140" height="64" class="box"/>
+  <text x="570" y="284" text-anchor="middle">FAST-9</text>
+  <text x="570" y="307" text-anchor="middle">+ NMS · shared</text>
+
+  <!-- Display branch -->
+  <rect x="720" y="164" width="168" height="64" class="box"/>
+  <text x="804" y="190" text-anchor="middle">Display selector</text>
+  <text x="804" y="214" text-anchor="middle">+ keypoint overlay</text>
+  <path d="M640 196 H720" class="edge"/>
+  <path d="M640 290 H676 V244 H804 V228" class="edge"/>
+  <rect x="952" y="164" width="188" height="64" class="box"/>
+  <text x="1046" y="190" text-anchor="middle">Display buffer</text>
+  <text x="1046" y="214" text-anchor="middle">640 × 480 × 5 bits</text>
+  <path d="M888 196 H952" class="edge"/>
+  <rect x="1204" y="164" width="192" height="64" class="box"/>
+  <text x="1300" y="190" text-anchor="middle">VGA output</text>
+  <text x="1300" y="214" text-anchor="middle">25 MHz pixel clock</text>
+  <path d="M1140 196 H1204" class="edge"/>
+
+  <!-- ORB feature and raw-image paths -->
+  <rect x="500" y="386" width="140" height="76" class="box"/>
+  <text x="570" y="416" text-anchor="middle">Raw banks A/B</text>
+  <text x="570" y="442" text-anchor="middle">4-bit pixels</text>
+  <rect x="720" y="386" width="168" height="76" class="box"/>
+  <text x="804" y="416" text-anchor="middle">Grid top-N</text>
+  <text x="804" y="442" text-anchor="middle">8 × 6 cells · ≤ 384</text>
+  <path d="M676 290 V366 H804 V386" class="edge"/>
+  <circle cx="676" cy="290" r="3.3" fill="#000"/>
+  <rect x="952" y="386" width="188" height="110" class="box"/>
+  <text x="1046" y="415" text-anchor="middle">41 × 41 patch</text>
+  <text x="1046" y="444" text-anchor="middle">Orientation</text>
+  <text x="1046" y="473" text-anchor="middle">Rotated BRIEF</text>
+  <path d="M888 424 H952" class="edge"/>
+  <path d="M640 424 H675 V526 H1046 V496" class="edge"/>
+  <text x="816" y="550" text-anchor="middle">Raw image → patch reads</text>
+  <rect x="1204" y="386" width="192" height="110" class="box"/>
+  <text x="1300" y="419" text-anchor="middle">256-bit descriptor</text>
+  <text x="1300" y="447" text-anchor="middle">Position · score · angle</text>
+  <text x="1300" y="475" text-anchor="middle">Frame ID · timestamp</text>
+  <path d="M1140 441 H1204" class="edge"/>
+
+</svg>
+
+

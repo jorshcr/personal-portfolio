@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-labelledby="title">
+<title id="title">Frame Processing Timeline</title>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#000"/></marker><style>text {font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;fill:#000}.title {font-size:28px;font-weight:600}.box {fill:#fff;stroke:#000;stroke-width:1.4}.line {fill:none;stroke:#000;stroke-width:1.4}.guide {fill:none;stroke:#000;stroke-width:1;stroke-dasharray:4 6}</style></defs>
+<rect width="1000" height="620" fill="#fff"/>
+<text x="26" y="52" text-anchor="start" class="title">Frame Processing Timeline</text>
+<text x="160" y="86" text-anchor="start" class="">Time (schematic; not to scale)</text>
+<path d="M160 100 H974" class="line" marker-end="url(#arrow)"/>
+<path d="M160 118 V528" class="guide"/>
+<path d="M234 118 V528" class="guide"/>
+<path d="M308 118 V528" class="guide"/>
+<path d="M382 118 V528" class="guide"/>
+<path d="M456 118 V528" class="guide"/>
+<path d="M530 118 V528" class="guide"/>
+<path d="M604 118 V528" class="guide"/>
+<path d="M678 118 V528" class="guide"/>
+<path d="M752 118 V528" class="guide"/>
+<path d="M826 118 V528" class="guide"/>
+<path d="M900 118 V528" class="guide"/>
+<path d="M974 118 V528" class="guide"/>
+<text x="26" y="159" text-anchor="start" class="">Camera input</text>
+<text x="26" y="245" text-anchor="start" class="">FAST / VGA</text>
+<text x="26" y="331" text-anchor="start" class="">ORB engine</text>
+<text x="26" y="417" text-anchor="start" class="">Raw bank A</text>
+<text x="26" y="503" text-anchor="start" class="">Raw bank B</text>
+<rect x="160" y="132" width="148" height="44" class="box"/>
+<text x="234" y="150" text-anchor="middle" class="">Frame n</text>
+<text x="234" y="169" text-anchor="middle" class="">Accepted by ORB</text>
+<rect x="308" y="132" width="370" height="44" class="box"/>
+<text x="493" y="159" text-anchor="middle" class="">Intervening frames skipped by ORB</text>
+<rect x="678" y="132" width="148" height="44" class="box"/>
+<text x="752" y="150" text-anchor="middle" class="">Frame n + k</text>
+<text x="752" y="169" text-anchor="middle" class="">Accepted by ORB</text>
+<rect x="826" y="132" width="148" height="44" class="box"/>
+<text x="900" y="159" text-anchor="middle" class="">Skipped by ORB</text>
+<rect x="160" y="218" width="814" height="44" class="box"/>
+<text x="567" y="245" text-anchor="middle" class="">Continuous camera processing and independent VGA output</text>
+<rect x="160" y="304" width="148" height="44" class="box"/>
+<text x="234" y="322" text-anchor="middle" class="">Capture + FAST</text>
+<text x="234" y="341" text-anchor="middle" class="">Grid selection</text>
+<rect x="308" y="304" width="296" height="44" class="box"/>
+<text x="456" y="322" text-anchor="middle" class="">Patch → Orientation → BRIEF</text>
+<text x="456" y="341" text-anchor="middle" class="">≈ 83 ms / 384 features at 100 MHz</text>
+<rect x="604" y="304" width="74" height="44" class="box"/>
+<text x="641" y="322" text-anchor="middle" class="">Wait</text>
+<text x="641" y="341" text-anchor="middle" class="">for frame</text>
+<rect x="678" y="304" width="148" height="44" class="box"/>
+<text x="752" y="322" text-anchor="middle" class="">Capture + FAST</text>
+<text x="752" y="341" text-anchor="middle" class="">Grid selection</text>
+<rect x="826" y="304" width="148" height="44" class="box"/>
+<text x="900" y="322" text-anchor="middle" class="">Descriptor</text>
+<text x="900" y="341" text-anchor="middle" class="">extraction …</text>
+<rect x="160" y="390" width="148" height="44" class="box"/>
+<text x="234" y="417" text-anchor="middle" class="">Write frame n</text>
+<rect x="308" y="390" width="296" height="44" class="box"/>
+<text x="456" y="417" text-anchor="middle" class="">Read patches</text>
+<rect x="604" y="390" width="370" height="44" class="box"/>
+<text x="789" y="417" text-anchor="middle" class="">Retain completed frame n</text>
+<rect x="160" y="476" width="518" height="44" class="box"/>
+<text x="419" y="503" text-anchor="middle" class="">Retain previous frame / unused at startup</text>
+<rect x="678" y="476" width="148" height="44" class="box"/>
+<text x="752" y="503" text-anchor="middle" class="">Write frame n + k</text>
+<rect x="826" y="476" width="148" height="44" class="box"/>
+<text x="900" y="503" text-anchor="middle" class="">Read patches</text>
+<path d="M160 542 V554 H308 V542 M308 542 V554 H604 V542" class="line"/>
+<text x="234" y="581" text-anchor="middle" class="">Capture time</text>
+<text x="456" y="581" text-anchor="middle" class="">Descriptor extraction time</text>
+</svg>

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="910" style="max-width:100%;height:auto" viewBox="0 0 1600 910" role="img" aria-labelledby="title desc">
+<title id="title">UNIT Fitness System Overview</title><desc id="desc">Two BLE sensing paths feed a React Native app: acceleration is processed into velocity and repetitions, and load-cell measurements supply weight. Live metrics flow into saved workouts.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#f36c21"/></marker></defs>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#202828}.kicker{font-size:15px;font-weight:700;letter-spacing:2px;fill:#a64716}.heading{font-size:24px;font-weight:700}.body{font-size:19px;fill:#485454}.note{font-size:16px;fill:#64706d}.label{font-size:16px;font-weight:700;fill:#a64716}.wire{fill:none;stroke:#f36c21;stroke-width:3;marker-end:url(#arrow);stroke-linejoin:round}</style>
+<rect width="1600" height="910" fill="#faf9f5"/>
+<text x="64" y="115" font-size="43" font-weight="700">UNIT Fitness System Overview</text>
+
+<rect x="40" y="187" width="348" height="638" rx="24" fill="#f0f2ed"/>
+<rect x="430" y="187" width="1106" height="638" rx="24" fill="#f0f2ed"/>
+<text x="454" y="174" class="kicker">REACT NATIVE MOBILE APP</text>
+<text x="64" y="174" class="kicker">SENSING HARDWARE</text>
+<text x="64" y="207" font-size="17" fill="#485454">Retrofitted to Gym Weight Stack Machines</text>
+<rect x="64" y="260" width="300" height="170" rx="14" fill="#fff" stroke="#d6ddd5" stroke-width="1.5"/>
+<text x="86" y="296" class="heading">Motion sensor</text>
+<text x="86" y="329" class="body">Z-axis acceleration</text>
+<text x="86" y="356" class="body">BLE sample stream</text>
+<text x="86" y="383" class="body">Sensor model unconfirmed</text>
+<rect x="454" y="260" width="465" height="170" rx="14" fill="#fff" stroke="#d6ddd5" stroke-width="1.5"/>
+<text x="476" y="296" class="heading">Condition acceleration</text>
+<text x="476" y="329" class="body">Receipt timestamps → elapsed time</text>
+<text x="476" y="356" class="body">Rolling gravity-baseline removal</text>
+<text x="476" y="383" class="body">Optional Savitzky–Golay + LP / HP filters</text>
+<rect x="454" y="474" width="465" height="140" rx="14" fill="#fff" stroke="#d6ddd5" stroke-width="1.5"/>
+<text x="476" y="510" class="heading">Estimate velocity</text>
+<text x="476" y="543" class="body">Trapezoidal integration + high-pass filter</text>
+<text x="476" y="570" class="body">Zero-velocity updates control drift</text>
+<rect x="454" y="658" width="465" height="143" rx="14" fill="#fff" stroke="#d6ddd5" stroke-width="1.5"/>
+<text x="476" y="694" class="heading">Detect sets &amp; reps</text>
+<text x="476" y="727" class="body">IDLE / RECORDING set state machine</text>
+<text x="476" y="754" class="body">Hysteresis + duration / peak-velocity gates</text>
+<rect x="1000" y="260" width="510" height="170" rx="14" fill="#fff3e9" stroke="#f36c21" stroke-width="1.5"/>
+<text x="1022" y="296" class="heading">Live workout feedback</text>
+<text x="1022" y="329" class="body">Rep count and velocity charts</text>
+<text x="1022" y="356" class="body">Lifting + lowering duration, mean / peak speed</text>
+<text x="1022" y="383" class="body">Display updates throttled to 100 ms</text>
+<rect x="1000" y="487" width="510" height="127" rx="14" fill="#fff" stroke="#d6ddd5" stroke-width="1.5"/>
+<text x="1022" y="523" class="heading">Workout records</text>
+<text x="1022" y="556" class="body">Rep metrics + velocity traces</text>
+<text x="1022" y="583" class="body">Passed to the existing set-storage service</text>
+<rect x="64" y="550" width="300" height="225" rx="14" fill="#fff" stroke="#d6ddd5" stroke-width="1.5"/>
+<text x="86" y="586" class="heading">Weight-sensing device</text>
+<text x="86" y="619" class="body">Strain-gauge load cell</text>
+<text x="86" y="646" class="body">↓ HX711 amplifier</text>
+<text x="86" y="673" class="body">↓ ESP32 firmware</text>
+<text x="86" y="700" class="body">Tare, calibration, smoothing</text>
+<rect x="1000" y="666" width="510" height="135" rx="14" fill="#fff" stroke="#d6ddd5" stroke-width="1.5"/>
+<text x="1022" y="702" class="heading">Weight in the app</text>
+<text x="1022" y="735" class="body">BLE weight readings</text>
+<text x="1022" y="762" class="body">Calibration / scaling + plate rounding</text>
+<path d="M364 333 H454" class="wire"/>
+<text x="387" y="317" class="label">BLE</text>
+<path d="M686 430 V474" class="wire"/>
+<path d="M686 614 V658" class="wire"/>
+<path d="M919 732 H956 V345 H1000" class="wire"/>
+
+<path d="M919 534 H956" fill="none" stroke="#f36c21" stroke-width="3"/>
+<path d="M1255 430 V487" class="wire"/>
+<path d="M364 704 H403 V844 H1255 V801" class="wire"/>
+
+<path d="M1255 666 V614" class="wire"/>
+</svg>

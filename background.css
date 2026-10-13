@@ -258,3 +258,62 @@ body.home-page .portrait { width:220px; height:180px; aspect-ratio:11 / 9; }
 body.home-page .portrait img { width:359.1px; height:239.4px; left:-43.121px; top:-46.332px; }
 body.home-page .introduction { min-height:180px; }
 body.home-page .home-experience-rows { margin-top:65px; }
+
+/* Home showcases projects; the second page holds the experience journey. */
+body.home-page .home-projects { margin-top:65px; }
+.about-main { width:800px; min-width:800px; margin:0 auto; flex:0 0 auto; }
+.about-main .home-experience-rows { margin-top:12px; }
+body.about-page .experience-category h2 { font-size:16px; color:#444; }
+body.about-page .experience-category article > p { font-size:16px; color:#444; line-height:1.4; }
+
+/* Give navigation breathing room and introduce the project collection. */
+.site-header nav { gap:64px; }
+body.home-page .projects-intro-label { font:400 16px/1.4 var(--font-main); color:#444444; margin:0 0 -42px; }
+
+
+.about-intro { font:400 16px/1.4 var(--font-main); color:#444444; margin:12px 0 36px; }
+.about-intro p { margin:0; }
+
+.about-quote {
+  margin:20px auto 28px;
+  padding:12px 24px;
+  text-align:center;
+  font:400 24px/1.5 var(--font-main);
+  color:#111111;
+  max-width:720px;
+}
+
+/* Editorial pull quote, using the site's existing serif and blue accent. */
+.about-intro .about-quote {
+  position:relative; max-width:720px; margin:28px auto 36px;
+  padding:32px 64px; text-align:left;
+  font:500 18px/1.5 var(--font-main); color:#111;
+}
+.about-quote .quote-words { font-size:20px; display:block; padding:10px 0; border-top:1px dotted #666; border-bottom:1px dotted #666; }
+.about-quote .quote-decoration { position:absolute; color:#beddf2; font:500 80px/1 var(--font-main); pointer-events:none; }
+.about-quote .quote-open { left:0; top:0; }
+.about-quote .quote-close { right:0; bottom:-12px; }
+
+body.home-page .projects-intro-label { font-size:18px; text-align:center; }
+
+/* Compact, centered quotation with neutral decoration. */
+.about-intro .about-quote {
+  max-width:580px;
+  padding:24px 42px;
+  font-weight:400;
+  text-align:center;
+}
+.about-quote .quote-decoration { color:#444444; font-weight:400; font-size:64px; }
+.about-quote .quote-open { left:4px; top:8px; }
+.about-quote .quote-close { right:4px; bottom:0; }
+
+.quote-attribution { display:block; margin-top:14px; font:400 12px/1.4 var(--font-main); color:#666; text-align:center; }
+
+.about-main .about-intro { margin-top:0; }
+.about-intro .about-quote { margin-top:0; padding-top:0; }
+.about-quote .quote-open { top:-16px; }
+
+.about-intro .about-quote { padding-bottom:0; margin-bottom:16px; }
+.about-quote .quote-close { bottom:8px; }
+
+.about-intro > p + p { margin-top:12px; }

@@ -1,6 +1,6 @@
 (() => {
 const key='home-photo-crop-v1';
-const defaults={width:220,height:180,zoom:1.33,x:31,y:78};
+const defaults={width:224,height:180,zoom:1.33,x:32,y:78};
 function init(){
  const photo=document.querySelector('.home-page .portrait');if(!photo||photo.querySelector('.photo-edit-toggle'))return;
  const img=photo.querySelector('img');let values={...defaults};try{Object.assign(values,JSON.parse(localStorage.getItem(key))||{})}catch{}

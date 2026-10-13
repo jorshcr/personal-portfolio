@@ -4,7 +4,7 @@ const host=document.createElement('div');host.className='site-wave';host.setAttr
 const canvas=document.createElement('canvas');host.append(canvas);document.body.prepend(host);
 const ctx=canvas.getContext('2d');
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
-const fontSize=9,cellWidth=6,cellHeight=11,speed=.7,cursorStrength=.12;
+const fontSize=8,cellWidth=6,cellHeight=11,speed=.8,cursorStrength=.12;
 let width,height,cols,rows,pixels,flow,time=12,last=0,raf=0;
 const chars=' .:+-=xICA$FY#@';
 function resize(){width=innerWidth;height=innerHeight;const dpr=Math.min(devicePixelRatio||1,2);canvas.width=width*dpr;canvas.height=height*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);cols=Math.ceil(width/cellWidth);rows=Math.ceil(height/cellHeight);pixels=new Uint8ClampedArray(cols*rows*4);flow=new FluidField(width/height,5);draw();}

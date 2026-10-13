@@ -165,3 +165,20 @@ body.portfolio-page { min-width:896px; }
 .project-editor-panel textarea { min-height:90px; resize:vertical; }
 .project-editor-panel button { font:inherit; padding:6px; margin:4px; cursor:pointer; }
 .projects-main .project-skills { overflow-x:auto; }
+
+/* Video slides open with playback controls in the expanded gallery. */
+.gallery-slide { position:relative; }
+.gallery-slide video { display:block; width:100%; height:100%; object-fit:contain; pointer-events:none; }
+.gallery-video-label { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); display:grid; place-items:center; width:28px; height:28px; border-radius:50%; color:#222; background:#fff; box-shadow:0 1px 4px #0005; pointer-events:none; }
+.gallery-video-label svg { width:12px; height:12px; fill:currentColor; margin-left:2px; }
+.expanded-gallery-media video { width:100%; height:100%; object-fit:contain; }
+
+/* A caption band keeps short descriptions separate from the media. */
+.project-gallery .gallery-track { height:calc(100% - 38px); }
+.gallery-caption { height:38px; margin:0; padding:5px 4px 0; box-sizing:border-box; background:white; color:#555; font:400 11px/1.25 var(--font-main); text-align:center; }
+.project-gallery .gallery-count { bottom:42px; }
+.project-gallery .gallery-arrow { top:calc(50% - 19px); }
+.expanded-gallery-media { height:min(72dvh,740px); }
+.expanded-gallery-caption { margin:3px 0 0; color:#eee; text-align:center; font:400 16px/1.4 var(--font-main); }
+.expanded-gallery-counter { position:static; transform:none; width:fit-content; margin:5px auto 0; pointer-events:none; }
+.expanded-gallery-media video { pointer-events:auto; }
