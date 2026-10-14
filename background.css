@@ -333,3 +333,5 @@ body.home-page .projects-intro-label { font-size:18px; text-align:center; }
 .smiley-editor-controls input[type=range] { flex:1; }
 .smiley-editor-actions { display:flex; flex-wrap:wrap; gap:8px; }
 .smiley-editor-actions button { background:#fff; border:1px solid #888; border-radius:4px; padding:6px 10px; font:inherit; cursor:pointer; }
+
+.about-work-in-progress .about-smiley { width:70px; height:70px; transform:rotate(-8deg); flex-shrink:0; }

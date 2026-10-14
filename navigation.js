@@ -17,8 +17,8 @@
       document.body.className = doc.body.className;
       window.initProjectGalleries?.();
       window.initRecentStar?.();
-      window.initAboutSmiley?.();
       window.sizeHomePortrait?.();
+      window.initPortraitPresentation?.();
       window.initHomeTimeline?.();
       document.title = doc.title;
       document.querySelector('meta[name="description"]').content = doc.querySelector('meta[name="description"]').content;
