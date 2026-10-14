@@ -16,6 +16,8 @@
       document.querySelector('main').replaceWith(main);
       document.body.className = doc.body.className;
       window.initProjectGalleries?.();
+      window.initRecentStar?.();
+      window.initAboutSmiley?.();
       window.sizeHomePortrait?.();
       window.initHomeTimeline?.();
       document.title = doc.title;

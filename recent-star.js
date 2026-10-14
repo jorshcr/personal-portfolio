@@ -1,4 +1,4 @@
 (() => {
 function apply(){const heading=document.querySelector('[aria-label="FPGA Camera Vision Accelerator image gallery"]')?.closest('article')?.querySelector('h2');if(!heading)return;let style='gold';try{const saved=localStorage.getItem('portfolio-recent-star');if(['sketch','sparkle','filled','custom'].includes(saved))style=saved}catch{}heading.classList.add('recent-project-title');let image=style==='gold'?'url("assets/custom-star-gold.svg")':`url("assets/recent-star-${style}.svg")`;if(style==='custom'){try{const drawing=localStorage.getItem('portfolio-custom-star');image=drawing?`url("data:image/svg+xml;charset=utf-8,${encodeURIComponent(drawing)}")`:'url("assets/recent-star-sketch.svg")'}catch{}}heading.style.setProperty('--recent-star',image);heading.title='Most recent project';}
-apply();new MutationObserver(apply).observe(document.body,{childList:true});window.addEventListener('storage',apply);
+window.initRecentStar=apply;document.addEventListener('DOMContentLoaded',apply);apply();new MutationObserver(apply).observe(document.body,{childList:true});window.addEventListener('storage',apply);
 })();

@@ -81,7 +81,7 @@ body.portfolio-page { padding: 0 0 clamp(28px, 10vh, 100px); }
   border: 0;
   line-height: 1.2;
 }
-.site-header .wordmark { font: 600 24px/1.2 var(--font-main); letter-spacing: 0; white-space: nowrap; }
+.site-header .wordmark { font: 500 24px/1.2 var(--font-main); letter-spacing: 0; white-space: nowrap; }
 .site-header nav { display: flex; flex: 0 0 auto; width: auto; margin-left: auto; justify-content: flex-end; gap: 34px; }
 .site-header nav a { font: 400 var(--heading)/1.25 var(--font-main); padding: 8px 0; border: 0; }
 .site-header nav a[aria-current="page"] { border: 0; }

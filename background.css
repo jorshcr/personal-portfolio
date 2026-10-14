@@ -320,4 +320,16 @@ body.home-page .projects-intro-label { font-size:18px; text-align:center; }
 
 .about-page .home-experience-rows[hidden] { display:none; }
 .about-work-in-progress { display:flex; align-items:center; justify-content:center; gap:12px; margin:44px 0 64px; font:400 16px/1.4 var(--font-main); color:#444; text-align:center; }
-.about-work-in-progress img { width:44px; height:44px; transform:rotate(-8deg); }
+.about-smiley-button { border:0; background:none; padding:2px; cursor:pointer; line-height:0; }
+.about-smiley-button img { width:var(--about-smiley-size,70px); height:var(--about-smiley-size,70px); transform:rotate(-8deg); }
+.about-smiley-button:focus-visible { outline:2px solid #337eea; outline-offset:3px; }
+.smiley-editor { width:min(560px,calc(100vw - 32px)); max-height:calc(100vh - 32px); overflow:auto; border:1px solid #bbb; border-radius:8px; padding:22px; color:#222; font:400 16px/1.4 var(--font-main); }
+.smiley-editor::backdrop { background:#0008; }
+.smiley-editor h2 { margin:0 0 8px; font:500 24px/1.2 var(--font-main); }
+.smiley-editor p { margin:0 0 14px; }
+.smiley-editor canvas { display:block; width:min(100%,420px); height:auto; aspect-ratio:1; margin:auto; border:1px solid #bbb; border-radius:6px; background:#fff; touch-action:none; cursor:crosshair; }
+.smiley-editor-controls { display:grid; grid-template-columns:1fr auto; gap:8px 12px; margin:16px 0; }
+.smiley-editor-controls label { grid-column:1 / -1; display:flex; align-items:center; gap:10px; }
+.smiley-editor-controls input[type=range] { flex:1; }
+.smiley-editor-actions { display:flex; flex-wrap:wrap; gap:8px; }
+.smiley-editor-actions button { background:#fff; border:1px solid #888; border-radius:4px; padding:6px 10px; font:inherit; cursor:pointer; }
