@@ -317,3 +317,7 @@ body.home-page .projects-intro-label { font-size:18px; text-align:center; }
 .about-quote .quote-close { bottom:8px; }
 
 .about-intro > p + p { margin-top:12px; }
+
+.about-page .home-experience-rows[hidden] { display:none; }
+.about-work-in-progress { display:flex; align-items:center; justify-content:center; gap:12px; margin:44px 0 64px; font:400 16px/1.4 var(--font-main); color:#444; text-align:center; }
+.about-work-in-progress img { width:44px; height:44px; transform:rotate(-8deg); }

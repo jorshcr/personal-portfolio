@@ -190,3 +190,7 @@ body.portfolio-page { min-width:896px; }
 .project-overview a { color:inherit; }
 
 body.portfolio-page .projects-main .portfolio-project .project-links:not(:has(a)) { display:none; }
+
+/* Shared image rounding. */
+.portrait { border-radius:4px; overflow:hidden; }
+.gallery-slide img, .gallery-slide video, .expanded-gallery-media img, .expanded-gallery-media video { border-radius:4px; }
