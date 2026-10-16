@@ -186,11 +186,12 @@ body.portfolio-page { min-width:896px; }
 .recent-project-title { display:flex; align-items:center; gap:7px; }
 .recent-project-title::after { content:""; display:block; flex:0 0 20px; width:20px; height:20px; background:var(--recent-star) center/contain no-repeat; transform:rotate(-8deg); }
 
-.project-links > span:first-child, .project-links a, .project-overview a { text-decoration:underline; text-underline-offset:3px; }
-.project-overview a { color:inherit; }
+.project-links > span:first-child, .project-links a, .project-overview a, .project-expanded-content a { text-decoration:underline; text-underline-offset:3px; }
+.project-overview a, .project-expanded-content a { color:inherit; }
 
 body.portfolio-page .projects-main .portfolio-project .project-links:not(:has(a)) { display:none; }
 
 /* Shared image rounding. */
 .portrait { border-radius:4px; overflow:hidden; }
 .gallery-slide img, .gallery-slide video, .expanded-gallery-media img, .expanded-gallery-media video { border-radius:4px; }
+

@@ -1,5 +1,12 @@
 (() => {
 function formatProjectLinks(){
+ document.querySelectorAll('.portfolio-project').forEach(card=>{
+  if(card.querySelector('[data-gallery]')?.dataset.gallery!=='Scrambler Humanoid Robot')return;
+  const p=card.querySelectorAll('.project-expanded-content p')[1];if(!p)return;
+  const walker=document.createTreeWalker(p,NodeFilter.SHOW_TEXT);const nodes=[];
+  while(walker.nextNode())if(walker.currentNode.parentElement.tagName!=='A' && /\bresearch\b/.test(walker.currentNode.textContent))nodes.push(walker.currentNode);
+  nodes.forEach(node=>{const parts=node.textContent.split(/(\bresearch\b)/);const fragment=document.createDocumentFragment();parts.forEach(part=>{if(part==='research'){const a=document.createElement('a');a.textContent=part;a.href='https://arxiv.org/html/2607.07830';a.target='_blank';a.rel='noopener noreferrer';fragment.append(a)}else fragment.append(document.createTextNode(part))});node.replaceWith(fragment)});
+ });
  document.querySelectorAll('.project-overview').forEach(p=>{
   const walker=document.createTreeWalker(p,NodeFilter.SHOW_TEXT);const nodes=[];while(walker.nextNode())if(walker.currentNode.parentElement.tagName!=='A' && /\bMEPC\b/.test(walker.currentNode.textContent))nodes.push(walker.currentNode);
   nodes.forEach(node=>{const parts=node.textContent.split(/(\bMEPC\b)/);const fragment=document.createDocumentFragment();parts.forEach(part=>{if(part==='MEPC'){const a=document.createElement('a');a.textContent=part;a.href='https://viterbiinnovation.usc.edu/competitions-and-programs/mepc/';a.target='_blank';a.rel='noopener noreferrer';fragment.append(a)}else fragment.append(document.createTextNode(part))});node.replaceWith(fragment)});
@@ -30,6 +37,12 @@ if(fpgaDraft && !fpgaDraft.modeSwitchCaptionAdded){
 }
 // Preserve captions attached to the original media when reversing this gallery.
 const scramblerDraft=drafts['Scrambler Humanoid Robot'];
+if(scramblerDraft && !scramblerDraft.slopeResearchUpdated){
+ if(scramblerDraft.problem==="Humanoids can travel max 30 degrees inclines by walking. We want to allow them to be able to travel steeper grades where they support rather than burden human expeditions.")scramblerDraft.problem="Steep slopes are still challenging for humanoids. We wanted to explore whether adding hand support could help them travel steeper grades where they support rather than burden human expeditions.";
+ if(scramblerDraft.contributions && !/\bresearch\b/i.test(scramblerDraft.contributions))scramblerDraft.contributions+=" For context, this research explores how humanoids can adapt their walking to steep slopes.";
+ scramblerDraft.slopeResearchUpdated=true;
+ try{localStorage.setItem(key,JSON.stringify(drafts))}catch{}
+}
 if(scramblerDraft && !scramblerDraft.captionOrderReversed){
   const previous={...scramblerDraft};
   for(let i=0;i<4;i++){delete scramblerDraft['caption'+i];if(previous['caption'+(3-i)]!==undefined)scramblerDraft['caption'+i]=previous['caption'+(3-i)];}
@@ -58,3 +71,5 @@ const actions=document.createElement('div');const close=document.createElement('
 })}
 init();new MutationObserver(init).observe(document.body,{childList:true});
 })();
+
+
